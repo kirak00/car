@@ -42,6 +42,13 @@ $(function(){
   }
   
 
+  $("header .icons .menu").on("click", function(){
+    $("html").addClass("menuOn")
+  })
+  $(".myMenuWrap .btnClose").on("click", function(){
+    $("html").removeClass("menuOn")
+  })
+
 });
 
 

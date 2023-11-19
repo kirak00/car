@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>차부바</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+<link rel="stylesheet" href="../css/common.css">
+
+<script src="../js/juqery-3.7.0.min.js"></script>
+<script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script src="../js/common.js"></script>
+</head>
+<body>
+<style>
+  button    {padding:0 14px; flex:1}
+</style>
+  <div class="wrap">
+    <section class="container">
+      <div style="padding:100px 0 0; display:flex; gap:10px; flex-wrap: wrap; ">
+        <button type="button" class="btn" id="layerBtn_1">alert</button>
+        <button type="button" class="btn" id="layerBtn_2">담당자 연락처</button>
+        <button type="button" class="btn" id="layerBtn_3">결제방식 선택</button>
+        <button type="button" class="btn" id="layerBtn_4">결제 예정금액(법인)</button>
+        <button type="button" class="btn" id="layerBtn_5">결제 예정금액(간편)</button>
+        <button type="button" class="btn" id="layerBtn_6">날짜 예약</button>
+        <button type="button" class="btn" id="layerBtn_7">시간 예약</button>
+        <button type="button" class="btn" id="layerBtn_8">전화연결</button>
+      </div>
+    </section>
+  </div>
+
+
+<style>
+.layerWrap.show         {top:0; }
+.layerWrap.show::before   {opacity: 1; transition: .3s;}
+.layerWrap.show .layerBody   {transition:.3s .1s; transform: translateY(0);  opacity: 1;}
+.layerWrap.show.bottom .layerBody   {transition:.3s .1s; transform: translateY(0);  opacity: 1;}
+
+.layerWrap      {position:fixed; display:flex; z-index:1000; left:50%; top:100%; width:100%; height:100%;  transform: translateX(-50%); justify-content: center; }
+.layerWrap::before      {content: ''; position:absolute; width:100%; height:100%; opacity:0; background:rgba(0,0,0,0.5); }
+.layerWrap .layerBody   { position:relative;  z-index:10;  display:flex; flex-direction: column; margin:auto; width:336px; min-height:190px; overflow: hidden; opacity: 0; background:#fff; border-radius: 4px; transform: translateY(25%);   }
+.layerWrap .layerBody .layerClose   {display:none; position: absolute; right:16px; top:20px; width:24px; height:24px; background: url(../images/layer_close.png) no-repeat;}
+.layerWrap.bottom      {}
+.layerWrap.bottom .layerBody   {width:360px; margin:auto auto 0; border-radius: 8px 8px 0 0; overflow: hidden; transform: translateY(100%);  }
+.layerWrap.bottom .layerBody .layerClose   {display:block; }
+.layerWrap.bottom .layerBtn   {padding:0 16px 24px; gap:10px  }
+.layerWrap.bottom .layerBtn button   {border-radius: 24px;}
+.layerWrap.bottom .layerBtn button   {border-radius: 24px;}
+
+.layerWrap .layerBtn   { width:100%; display:flex; margin-top:auto;  }
+.layerWrap .layerBtn button   { width:100%; height:48px; text-align: center; border-radius: 0; }
+.layerWrap .layerBtn button.btn   { border:0; background:#F5F5F5;  }
+.layerWrap .layerBtn .btnOK   { min-width:60%}
+.layerWrap .layerBody .ment   { display:flex; height:150px;  }
+.layerWrap .layerBody .ment p   {margin: auto;}
+.layerWrap .layerCont   { padding:18px 20px 24px; }
+.layerWrap .managerContact .titBox   { display:flex; padding:0  0 15px 0; justify-content: space-between;}
+.layerWrap .managerContact .titBox strong    {font-size:16px; font-weight: 400; }
+.layerWrap .managerContact .titBox button    {flex:0; white-space: nowrap; font-size:14px; }
+.error    {font-size: 12px; color:#FF5757; margin-top:6px; }
+
+.layerWrap .payType .tit     {font-size: 20px; ;}
+.layerWrap .payType .payInfo     {padding:12px 0 0; line-height: 110%; font-size: 16px;;}
+.layerWrap .payType .payInfo strong    {color:#F49B3E;}
+.layerWrap .payType ~ .layerBtn     {}
+.layerWrap .payType ~ .layerBtn button     {display:flex; padding:16px; height:130px; flex-direction: column;  }
+.layerWrap .payType ~ .layerBtn button strong     { font-size:20px;  }
+.layerWrap .payType ~ .layerBtn button span       { font-size:16px; line-height: 17px; font-weight: 400;   }
+.layerWrap .payType ~ .layerBtn button.btn        { border:1px solid #E0E0E0; color:#828282; }
+.layerWrap .payType ~ .layerBtn button.type01     {background:url(../images/pay_company.png) no-repeat right 18px bottom 18px #FFDB1F;}
+.layerWrap .payType ~ .layerBtn button.type02     {background:url(../images/pay_personal.png) no-repeat right 18px bottom 18px #fff;}
+
+.layerWrap .paymentConfirm     {padding:8px 0 0;  }
+.layerWrap .paymentConfirm .titBox     { }
+.layerWrap .paymentConfirm .titBox > em       {display:block; font-size:16px; font-weight: 700;   }
+.layerWrap .paymentConfirm .titBox > strong   {display:block; font-size:26px; font-weight: 700;   }
+.layerWrap .paymentConfirm .titBox P.tip    {padding-left:20px; font-size: 14px; color:#FF5757;  background:url(../images/warning.png) no-repeat 0 50%; }
+.layerWrap .paymentConfirm ul.payInfo       {padding:20px 0;}
+.layerWrap .paymentConfirm ul.payInfo li    { display:flex; justify-content: space-between; margin-top:6px; font-size: 16px; line-height:24px;}
+.layerWrap .paymentConfirm ul.payInfo li em    { color:#77889C;}
+.layerWrap .paymentConfirm ul.payInfo li span  {}
+.layerWrap .paymentConfirm .paytime     {display:flex; height:48px; padding:8px 12px; justify-content: space-between; background:#FFF5A5; border-radius: 24px;;}
+.layerWrap .paymentConfirm .paytime span      {margin:auto 0; font-size: 16px; }
+.layerWrap .paymentConfirm .paytime button    {height:32px; border-radius: 16px; padding:0 14px; flex:none}
+
+.layerWrap .paymentConfirm .payPoint    {border-top:1px solid #D7E2E4; padding:17px 20px 0; width:100%; margin-left:-20px; box-sizing: content-box; }
+.layerWrap .paymentConfirm .payPoint em   {display:inline-block; padding:0 10px; line-height:20px; background:#3E82F4; color:#fff;    }
+.layerWrap .paymentConfirm .payPoint p    {margin-top:9px; color:#3E82F4; }
+
+
+.layerWrap .datepicker .tit    {text-align: center; font-size: 16px; font-weight: 700;}
+.layerWrap .datepicker ~ .layerBtn    {padding:0 24px 32px; gap:10px;}
+.layerWrap .datepicker ~ .layerBtn button   {border-radius: 8px;}
+.layerWrap .datepicker ~ .layerBtn .btn     {background:#fff; border:1px solid #E0E0E0}
+.layerWrap .datepicker ~ .layerBtn .btnOK   {min-width: 10%;}
+.layerWrap .ui-widget-content    {width:100%; box-shadow: none; padding:0; margin:30px 0 0; }
+.layerWrap .ui-datepicker .ui-datepicker-header   {padding:0; }
+.layerWrap .ui-datepicker .ui-datepicker-title    {font-size: 20px; line-height: 30px;  }
+.layerWrap .ui-datepicker .ui-datepicker-prev     { background: url(../images/arrow_l_b.png) no-repeat 50% 50%; left:50px;}
+.layerWrap .ui-datepicker .ui-datepicker-next     { background: url(../images/arrow_r_b.png) no-repeat 50% 50%; right:50px;}
+.layerWrap .ui-state-default, 
+.layerWrap .ui-widget-content .ui-state-default, 
+.layerWrap .ui-widget-header .ui-state-default    {border:0; margin:0 auto; border-radius: 8px;}
+.ui-datepicker td span, .ui-datepicker td a   {padding:0; }
+
+.ui-datepicker th   {color:#333;}
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight, 
+.ui-widget-header .ui-state-highlight   {background:#ddd; color:#333}
+
+.ui-state-active, 
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active     {background:#F49B3E; color:#fff !important; }
+
+.ui-datepicker-week-end .ui-state-default  {color:#FF5757}
+.ui-datepicker-week-end ~ .ui-datepicker-week-end .ui-state-default  {color:#3E82F4}
+
+
+
+.timepicker       {}
+.timepicker .layerClose{display:none !important; }
+.timepicker .tit       {position:relative; text-align: center; font-size: 16px; font-weight: 700; padding-bottom:15px; }
+.timepicker .tit span.chk  {position:absolute; right:0; top:2px;  }
+.timepicker .tit span.chk label  {font-size: 12px; vertical-align: top; line-height:20px; }
+.timepicker .timePick  {position:relative; display:flex; height:200px; overflow: hidden; justify-content: center; font-size:24px; }
+.timepicker .timePick .hour   { position:relative; z-index:5; width:36px; overflow: scroll; overflow-x: hidden; }
+.timepicker .timePick .txt    { position:relative; z-index:5; margin:auto 0; padding:0 8px; }
+.timepicker .timePick .minute { position:relative; z-index:5; width:36px; overflow: scroll; overflow-x: hidden; }
+.timepicker .timePick div::-webkit-scrollbar {  display: none;}
+.timepicker .timePick div button {width:100%; padding:0; font-size:24px;height:36px; background: transparent; text-align: center; color:#BDBDBD }
+.timepicker .timePick div button.on {color:#333 }
+.timepicker .timePick ul {}
+.timepicker .timePick ul li { height:40px;  }
+.timepicker .timePick span.focus { position:absolute; z-index: 1; top:82px; width:100%; height:36px; background:#FFDB1F; opacity: .3; border-radius: 8px; }
+/* .timepicker .timePick span.focus1 { position:absolute; z-index: 10; top:42px; width:100%; height:36px; background:#fff;  opacity: .5; border-radius: 8px; }
+.timepicker .timePick span.focus2 { position:absolute; z-index: 10; top:122px; width:100%; height:36px; background:#fff; opacity: .5; border-radius: 8px; } */
+.timepicker .timePick span.focus3 { position:absolute; z-index: 10; top:0px; width:100%; height:40px; background:#fff;   opacity: .8; border-radius: 8px; }
+.timepicker .timePick span.focus4 { position:absolute; z-index: 10; top:162px; width:100%; height:40px; background:#fff; opacity: .8; border-radius: 8px; }
+
+.layerWrap.bottom .timepicker .layerBtn    {padding:0 24px 32px; gap:10px;}
+.layerWrap.bottom .timepicker .layerBtn button   {border-radius: 8px;}
+.layerWrap.bottom .timepicker .layerBtn .btn     {background:#fff; border:1px solid #E0E0E0}
+.layerWrap.bottom .timepicker .layerBtn .btnOK   {min-width: 10%;}
+
+</style>
+
+
+<!-- 레이어 alert -->
+<div class="layerWrap" id="layer_1">
+  <div class="layerBody">
+    <button type="button" class="layerClose"></button>
+    <div class="ment">
+      <p>
+        출발지 정보가 입력되지 않았습니다. <br>
+        출발지 주소를 직접 입력해주세요.
+      </p>
+    </div>
+    <div class="layerBtn">
+      <!-- <button type="button" class="btn">취소</button> -->
+      <button type="button" class="btnOK" onclick="layer_close('layer_1')">확인</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- 레이어 담당자 연락처  -->
+<div class="layerWrap "  id="layer_2">
+  <div class="layerBody">
+    <button type="button" class="layerClose"></button>
+    <div class="layerCont">
+      <div class="managerContact">
+        <div class="titBox">
+          <strong>담당자 연락처</strong>
+          <button type="button" class="btnAdd">연락처 선택</button>
+        </div>
+        <div class="inputWrap">
+          <input type="text" name="" id="" placeholder="전화번호를 입력하세요.">
+          <button type="button" class="btnDel"></button>
+        </div>
+        <p class="error">유효하지 않은 전화번호 입니다. 다시 입력해주세요.</p>
+      </div>
+    </div>
+    <div class="layerBtn">
+      <button type="button" class="btnOK"  onclick="layer_close('layer_2')">확인</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 레이어 결제방식 선택 -->
+<div class="layerWrap bottom "  id="layer_3">
+  <div class="layerBody">
+    <button type="button" class="layerClose"></button>
+    <div class="layerCont payType">
+      <div class="tit">
+        결제 방식 선택
+      </div>
+      <div class="payInfo">
+        운행요금 : <strong>30,000원</strong>
+      </div>
+
+    </div>
+
+    <div class="layerBtn">
+      <button type="button" class="type01 btnOK" onclick="layer_open('layer_4')"><strong>법인</strong> <span>후불결제</span></button>
+      <button type="button" class="type02 btn" onclick="layer_open('layer_5')"><strong>개인</strong> <span>간편결제</span></button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 레이어 결제 예정금액(법인)  -->
+<div class="layerWrap "  id="layer_4">
+  <div class="layerBody">
+    <button type="button" class="layerClose"></button>
+    <div class="layerCont">
+      <div class="paymentConfirm">
+        <div class="titBox">
+          <em>결제 예정금액</em>
+          <strong>0원</strong>
+          <p class="tip">도착지에서 <strong>기사님께 현금을 내지 마세요</strong></p>
+        </div>
+        <ul class="payInfo">
+          <li>
+            <em>법인후불 결제</em>
+            <span>신한 1234</span>
+          </li>
+          <li>
+            <em>사용 충전금</em>
+            <span>0 원</span>
+          </li>
+          <li>
+            <em>결제일</em>
+            <span>운행 완료 후 결제</span>
+          </li>
+        </ul>
+
+        <div class="paytime">
+          <span>결제일 지정 (7일 이내)</span>
+          <button type="button" class="btnAdd">변경</button>
+        </div>
+        
+      </div>
+    </div>
+    <div class="layerBtn">
+      <button type="button" class="btn"  onclick="layer_close('layer_4')">취소</button>
+      <button type="button" class="btnOK"  onclick="layer_close('layer_3');layer_close('layer_4')">확인</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- 레이어 결제 예정금액(간편)  -->
+<div class="layerWrap "  id="layer_5">
+  <div class="layerBody">
+    <button type="button" class="layerClose"></button>
+    <div class="layerCont">
+      <div class="paymentConfirm">
+        <div class="titBox">
+          <em>결제 예정금액</em>
+          <strong>150,000원</strong>
+          <p class="tip">도착지에서 <strong>기사님께 현금을 내지 마세요</strong></p>
+        </div>
+        <ul class="payInfo">
+          <li>
+            <em>적용 쿠폰</em>
+            <span>탁송 지원 패키지 1만원권</span>
+          </li>
+          <li>
+            <em>사용 충전금</em>
+            <span>30,000 원</span>
+          </li>
+          <li>
+            <em>결제수단</em>
+            <span>간편카드(비씨 2430)</span>
+          </li>
+        </ul>
+
+        <div class="payPoint">
+          <em>회원 혜택</em>
+          <p>
+            운행완료 후 2,500 포인트가 적립됩니다.  <br>
+            (리워드는 익일 오후에 적립됩니다.)
+          </p>
+        </div>
+        
+      </div>
+    </div>
+    <div class="layerBtn">
+      <button type="button" class="btnOK"  onclick="layer_close('layer_3');layer_close('layer_5')">호출하기</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- 레이어 날짜 예약 -->
+<div class="layerWrap bottom"  id="layer_6">
+  <div class="layerBody">
+    <button type="button" class="layerClose"></button>
+    <div class="layerCont datepicker">
+      <div class="tit">날짜 예약</div>
+      <div id="datepickerInline"></div>
+    </div>
+    <div class="layerBtn">
+      <button type="button" class="btn"  onclick="layer_close('layer_6')">취소</button>
+      <button type="button" class="btnOK"  onclick="layer_close('layer_6')">선택</button>
+    </div>
+  </div>
+</div>
+
+<!-- 레이어 시간 예약 -->
+<div class="layerWrap bottom show"  id="layer_6">
+  <div class="layerBody timepicker">
+    <button type="button" class="layerClose"></button>
+    <div class="layerCont">
+      <div class="tit">
+        시간 예약
+        <span class="chk">
+          <input type="checkbox" name="" id="timePickChk"> <label for="timePickChk"><span>즉시 예약</span></label>
+        </span>
+      </div>
+      <div class="timePick">
+        <span class="focus"></span>
+        <span class="focus1"></span>
+        <span class="focus2"></span>
+        <span class="focus3"></span>
+        <span class="focus4"></span>
+        <div class="scroll hour">
+          <ul>
+            <li></li>
+            <li></li>
+            <li><button type="button" class="on">01</button></li>
+            <li><button type="button">02</button></li>
+            <li><button type="button">03</button></li>
+            <li><button type="button">04</button></li>
+            <li><button type="button">05</button></li>
+            <li><button type="button">06</button></li>
+            <li><button type="button">07</button></li>
+            <li><button type="button">08</button></li>
+            <li><button type="button">09</button></li>
+            <li><button type="button">10</button></li>
+            <li><button type="button">11</button></li>
+            <li><button type="button">12</button></li>
+            <li><button type="button">13</button></li>
+            <li><button type="button">14</button></li>
+            <li><button type="button">15</button></li>
+            <li><button type="button">16</button></li>
+            <li><button type="button">17</button></li>
+            <li><button type="button">18</button></li>
+            <li><button type="button">19</button></li>
+            <li><button type="button">20</button></li>
+            <li><button type="button">21</button></li>
+            <li><button type="button">22</button></li>
+            <li><button type="button">23</button></li>
+            <li><button type="button">24</button></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <div class="txt">
+          :
+        </div>
+        <div class="scroll minute">
+          <ul>
+            <li></li>
+            <li></li>
+            <li><button type="button" class="on">00</button></li>
+            <li><button type="button">15</button></li>
+            <li><button type="button">20</button></li>
+            <li><button type="button">25</button></li>
+            <li><button type="button">30</button></li>
+            <li><button type="button">35</button></li>
+            <li><button type="button">40</button></li>
+            <li><button type="button">45</button></li>
+            <li><button type="button">50</button></li>
+            <li><button type="button">55</button></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="layerBtn">
+      <button type="button" class="btn"  onclick="layer_close('layer_6')">취소</button>
+      <button type="button" class="btnOK"  onclick="layer_close('layer_6')">선택</button>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<button type="button" class="btn" id="">전화연결</button>
+ -->
+
+
+
+
+<script>
+  function timePicker(){
+    
+    var scrollBox  = $(".timePick .scroll")
+    scrollBox.on("scroll",function(e){
+      var This = this;
+      if(this.scrollChk) return false;
+      if(this.timer) clearTimeout(this.timer);
+      this.timer = setTimeout(function(){
+        if(This.scrollChk) return false;
+        scrollSet(This);
+      },40);
+    });
+
+    scrollBox.each(function(i,o){
+      $(o).find("button").click(function(){
+        var idx = (this.offsetTop-2)/40 -2;
+        $(o).animate({scrollTop: idx*40},100)
+      })
+    })
+
+    function scrollSet(obj){
+      obj.scrollChk = true;
+      var scrollTop  = obj.scrollTop;
+      var sum01 = scrollTop%40;
+      var speed = 1
+      if(sum01 <= 20){
+        speed = -1;
+      }else{
+        sum01 = 40-sum01
+      }
+      var sum02 = scrollTop + sum01*speed;
+      $(obj).animate({scrollTop:sum02},150 , function(){
+        setTimeout(function(){
+          obj.scrollChk = false;
+          timeSetting()
+        },20)
+      }) 
+    }
+
+    function timeSetting(){
+      var time = []
+      scrollBox.find("button").removeClass("on")
+      scrollBox.each(function(i,o){
+        var idx = Math.round(o.scrollTop/40)
+        var target = $(o).find("button")[idx]
+        time.push(target.innerText);
+        $(target).addClass("on")
+      });
+      $(".timePick").attr({time : time.join(":")});
+    }
+  }
+
+
+  $(function(){
+    timePicker();
+  })
+  
+  var layerIndex = 1000;
+  function layer_open(id){
+    layerIndex++;
+    $("#" + id).addClass("show").css({zIndex:layerIndex});
+    var Close  = $("#" + id).find(".layerClose")
+    if(!Close[0].closeSet){
+      Close.on("click",function(){
+        this.closeSet = true;
+        layer_close( id);
+      })
+    }
+  }
+
+  
+
+
+  function layer_close(id){
+    $("#" + id).removeClass("show")
+  }
+  
+  $("#layerBtn_1").on("click",function(){
+    layer_open("layer_1")  
+  })
+  $("#layerBtn_2").on("click",function(){
+    layer_open("layer_2")  
+  })
+  
+  $("#layerBtn_3").on("click",function(){
+    layer_open("layer_3")  
+  })
+  
+  $("#layerBtn_4").on("click",function(){
+    layer_open("layer_4")  
+  })
+  
+  $("#layerBtn_5").on("click",function(){
+    layer_open("layer_5")  
+  })
+
+  $("#layerBtn_6").on("click",function(){
+    layer_open("layer_6")  
+  })
+
+  $("#layerBtn_7").on("click",function(){
+    layer_open("layer_7")  
+  })
+
+  $("#layerBtn_8").on("click",function(){
+    layer_open("layer_8")  
+  })
+
+  $( function() {
+    $( "#datepickerInline" ).datepicker({
+      minDate: "0D"
+    });
+  } );
+
+  
+  </script>
+
+
+
+
+
+</body>
+</html>

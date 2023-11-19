@@ -14,55 +14,19 @@
 </head>
 <body>
 
-<style>
-
-.wrap       { width:360px; margin:0 auto; padding:0 16px; box-sizing: border-box;  }
-.wrap header    { height:48px;  }
-.wrap header .titBox    { float:left; font-size:16px; font-weight: 700; padding:13px 0 0; }
-.wrap header ul.icons       { float:right; padding:11px; }
-.wrap header ul.icons li    { float:left; margin-left:14px;  }
-.wrap header ul.icons li a          {display:block; width:26px; height:26px; }
-.wrap header ul.icons li a.alarm    { background:url(../images/gnb_alarm.png) no-repeat 50% 50%; }
-.wrap header ul.icons li a.menu    { background:url(../images/gnb_menu.png) no-repeat 50% 50%; }
-
-section.container   {}
-
-.bnrList           {  }
-.bnrList .bnr         { background:  no-repeat right 22px top 50%; border-radius: 8px; box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.06); }
-.bnrList .bnr.blue    { background:  no-repeat right 16px top 50%; background-color: #3F8AF8; box-shadow:none  }
-.bnrList .bnr a       { height:106px;  padding:24px 0 0 18px; border:1px solid #E0E0E0; margin-top:8px; border-radius: 8px; }
-.bnrList .bnr.blue a  { height:74px; border:0; padding:11px 0 0 16px; font-size: 16px;  margin-bottom:14px; color:#fff; }
-.bnrList .bnr a       {display:block;  }
-.bnrList .bnr span        { display:block; font-size:14px;  }
-.bnrList .bnr strong.tit  { display:block; font-size:20px; line-height:29px; margin-top:7px;  }
-.bnrList .bnr.blue strong.tit  { font-size:18px; line-height:1.4; margin-top:0px; }
-
-.usage      {margin-top:40px; }
-.usage .tit_arrow      {}
-.usage .tit_arrow a    {font-size: 16px; display:block; }
-.usage .tit_arrow a::after    {content:""; display:inline-block; width:16px; height:16px; vertical-align:-2px; background:url(../images/arrow_r_b.png) no-repeat 0; }
-
-ul.tab01          {display:flex; padding:0 16px; width:100%; margin:20px 0 0 -16px; gap:20px; box-sizing: content-box; justify-content: flex-start; border-bottom:1px solid #E0E0E0 }
-ul.tab01 li       {margin-bottom:-1px; }
-ul.tab01 li a     {display:block; height:28px; font-size:14px;  border-bottom:1px solid #E0E0E0 }
-ul.tab01 li.on a  {border-bottom:2px solid #FFDB1F }
-
-.tabContentWrap     {background:#f5f5f5; padding:0 16px; width:100%; margin-left:-16px; box-sizing: content-box; }
-
-</style>
 
   <div class="wrap">
-    <header>
-      <div class="titBox">
-        차부바 포인트
-        356,000P
-      </div>
-      <ul class="icons">
-        <li><a href="#" class="alarm"><span class="hide">알림</span></a></li>
-        <li><a href="#" class="menu"><span class="hide">메뉴</span></a></li>
-      </ul>
-    </header>
     <section class="container">
+      <header>
+        <div class="titBox">
+          차부바 포인트
+          356,000P
+        </div>
+        <ul class="icons">
+          <li><a href="#" class="alarm"><span class="hide">알림</span></a></li>
+          <li><a href="#" class="menu"><span class="hide">메뉴</span></a></li>
+        </ul>
+      </header>
       <div class="bnrList">
         <div class="bnr blue" style="background-image: url(../images/bnr_1.png);"><a href="#"><strong class="tit">안전 귀갓길 만들기 <br>핸들대리와 함께해요.</strong></a></div>
         <div class="bnr " style="background-image: url(../images/bnr_2.png);"><a href="#"><span>바로 신청부터 예약기능까지 한번에</span><strong class="tit">차부바 탁송 신청하기</strong></a></div>
@@ -79,12 +43,13 @@ ul.tab01 li.on a  {border-bottom:2px solid #FFDB1F }
           <div class="nodata">
             이용내역이 없습니다.
           </div>
-          <ul>
+          <ul class="contList">
             <!-- 탁송 -->
             <li class="consignment">
               <div class="titBox">
                 <strong class="tit">탁송 서비스</strong>
-                <span class="status">사용자 취소</span>
+                <span class="status arrive">운행 완료</span>
+                <!-- <span class="status cancel">운행 완료</span> -->
               </div>
               <ul class="addr">
                 <li class="">
@@ -98,78 +63,122 @@ ul.tab01 li.on a  {border-bottom:2px solid #FFDB1F }
               </ul>
               <div class="btns">
                 <button type="button" class="btn">회차 접수</button>
-                <button type="button" class="btnOk">탁송 주문 재 접수</button>
-                <button type="button" class="btnOk">대리 다시 부르기</button>
+                <button type="button" class="btnOK">탁송 주문 재 접수</button>
+                <!-- <button type="button" class="btnOK">대리 다시 부르기</button> -->
+              </div>
+            </li>
+            <!-- 탁송 -->
+
+            <!-- 대리운전 -->
+            <li class="designated ">
+              <div class="titBox">
+                <strong class="tit">대리운전</strong>
+                <span class="status cancel">사용자 취소</span>
+              </div>
+              <ul class="addr">
+                <li class="">
+                  <em>출발</em>
+                  <span>서울시 강서구 양천로 534</span>
+                </li>
+                <li class="">
+                  <em>도착</em>
+                  <span>서울시 강서구 양천로 534</span>
+                </li>
+              </ul>
+              <div class="btns">
+                <button type="button" class="btnOK">대리 다시 부르기</button>
               </div>
             </li>
             <!-- 대리운전 -->
-            <li class="designated ">
-              
-            </li>
           </ul>
-          <div class="btnMore">
-            <button type="button" class="btnMore">+ 더보기</button>
-          </div>
+        </div>
+        <div class="moreWrap">
+          <button type="button" class="btnMore">+ 더보기</button>
         </div>
       </div>
       <div class="footer">
         <div class="customer">
           <a href="#">고객센터</a>
         </div>
-        <ul>
+        <ul class="links">
           <li><a href="#">1:1 문의</a></li>
           <li><a href="#">Q&A</a></li>
           <li><a href="#">사고 접수</a></li>
         </ul>
-        <div>
+        <div class="callCenterBox">
           <a href="#" class="btnCall">상담원 연결</a>
         </div>
       </div>
     </section>
-  </div>
-  <div class="myPage">
-    <div>
-      <h2>1234님</h2>
-      <div>
-        차부바 포인트
-        12,000P
+
+    <div class="myMenuWrap" >
+      <!-- 계정 -->
+      <div class="titBox">
+        <h2>1234님</h2>
+        <button type="button" class="btnClose"></button>
       </div>
-      이용해 주신 리워드! 충전금으로 전환 가능해요.
-    </div>
-    <div>
-      충전금
-      0원
-      할인 쿠폰
-      0장
-      <div>
-        충전권 등록
-        충전
-        쿠폰 등록
+      
+      <!-- 포인트 -->
+      <div class="pointInfo">
+        <a href="#">
+          <em>차부바 포인트</em>
+          <strong>12,000<span>P</span></strong>
+        </a>
+        <p>이용해 주신 리워드! 충전금으로 전환 가능해요.</p>
       </div>
-      <div>
-        간편결제 카드
-        등록 시 빠른 호출 가능!
+      
+      <!-- 충전금/쿠폰 -->
+      <div class="couponPoint">
+        <div class="item money">
+          <div class="tit">
+            <a href="#">충전금</a>
+          </div>
+          <strong class="count">0원</strong>
+          <div class="btns">
+            <a href="#" class="btn">충전권 등록</a>
+            <a href="#" class="btnOK">충전</a>
+          </div>
+        </div>
+        <div class="item coupon">
+          <div class="tit">
+            <a href="#">할인 쿠폰</a>
+          </div>
+          <strong class="count">0장</strong>
+          <div class="btns">
+            <a href="#" class="btn">쿠폰 등록</a>
+          </div>
+        </div>
       </div>
-    </div>
-    <div>
-      <ul>
-        <li><a href="#">대리쿠폰 <br>선물하기</a></li>
-        <li><a href="#">이벤트</a></li>
-        <li><a href="#">자주가는 <br>주소등록</a></li>
-        <li><a href="#">대리기사 <br>예약</a></li>
-        <li><a href="#">일일기사 <br>예약</a></li>
+      <div class="credit">
+        <a href="#">
+          <em>간편결제 카드</em>
+          <span>등록 시 빠른 호출 가능!</span>
+        </a>
+      </div>
+
+      
+      <!-- 링크 -->
+      <ul class="majorLinks">
+        <li class="item_1"><a href="#"><span><em>대리쿠폰 <br>선물하기</em></span></a></li>
+        <li class="item_2"><a href="#"><span><em>이벤트</em></span></a></li>
+        <li class="item_3"><a href="#"><span><em>자주가는 <br>주소등록</em></span></a></li>
+        <li class="item_4"><a href="#"><span><em>대리기사 <br>예약</em></span></a></li>
+        <li class="item_5"><a href="#"><span><em>일일기사 <br>예약</em></span></a></li>
       </ul>
-    </div>
-    <div>
-      <ul>
+
+      <!-- 링크 -->
+      <ul class="customerLink">
         <li><a href="#">이용내역</a></li>
         <li><a href="#">공지사항</a></li>
         <li><a href="#">고객센터</a></li>
         <li><a href="#">앱 설정</a></li>
       </ul>
+      
     </div>
-    
+
+
   </div>
+  
 
 
 </body>

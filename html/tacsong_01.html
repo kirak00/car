@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>차부바</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+<link rel="stylesheet" href="../css/common.css">
+
+<script src="../js/juqery-3.7.0.min.js"></script>
+<script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script src="../js/common.js"></script>
+</head>
+<body>
+
+
+  <div class="wrap">
+    <section class="container">
+      <div class="map">
+        <img src="../images/img_map.png" alt="">
+      </div>
+      <ul class="managerContact">
+        <li>
+          <strong>상차 담당자</strong>
+          <div class="info">
+            <span class="phone">010-1234-5678</span>
+            <a href="#">연락처 변경</a>
+          </div>
+        </li>
+        <li class="form">
+          <strong>하차 담당자</strong>
+          <div class="box">
+            <input type="text" placeholder="010-0000-0000">
+            <div class="chkWrap"><input type="checkbox" class="chk" name="" id="managerChk"> <label for="managerChk"><span>상차 담당자와 동일</span></label></div>
+          </div>
+        </li>
+      </ul>
+      <div class="carInfoForm">
+        <h3>자동차 종류</h3>
+        <ul class="carType">
+          <li class="car_1"><input type="radio" name="carType" id="carType_1" checked><label for="carType_1">승용차</label></li>
+          <li class="car_2"><input type="radio" name="carType" id="carType_2"><label for="carType_2">승합차</label></li>
+          <li class="car_3"><input type="radio" name="carType" id="carType_3"><label for="carType_3">화물차</label></li>
+          <li class="car_4"><input type="radio" name="carType" id="carType_4"><label for="carType_4">버스</label></li>
+        </ul>
+        <h3>차량 번호</h3>
+        <input type="text" placeholder="ex. 000가0000">
+        <h3>차량 모델</h3>
+        <input type="text" placeholder="ex. 소나타">
+      </div>
+      <div class="addressSetBox">
+        <div class="form">
+          <a href="#">출발지 : 서울 강서구 양천로 583</a>
+        </div>
+        <ul class="over">
+          <li><span class="ico_1">서울 강서구 양천로 583</span> <button type="button" class="btnDel"></button></li>
+          <li><span class="ico_2">서울 강서구 양천로 583</span> <button type="button" class="btnDel"></button></li>
+          <li><span class="ico_3">서울 강서구 양천로 583</span> <button type="button" class="btnDel"></button></li>
+        </ul>
+        <div class="to">
+          <div class="tit">
+            <strong>도착지</strong> <a href="#" class="btnAdd">+ 경유</a>
+          </div>
+          <div class="search">
+            <input type="text" placeholder="도착지를 검색해주세요.">
+            <button type="button" class="btnSearch"></button>
+          </div>
+        </div>
+      </div>
+      <div class="btBtns">
+        <a href="#" class="btn">전화로 호출</a>
+        <a href="#" class="btnOK">앱으로 호출</a>
+      </div>
+    </section>
+
+
+
+  </div>
+  
+
+
+</body>
+</html>

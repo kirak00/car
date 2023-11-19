@@ -2,33 +2,233 @@
 @import url('./base.css');
 
 /****************************
-**********  color  **********
+**********  input  **********
 *****************************/
-
-
+label {cursor: pointer;}
 
 
 /****************************
 **********  button  **********
 *****************************/
 
+a[class^=btn]   {display:inline-block; padding:0 16px;}
+a[class^=btn]:hover   {text-decoration: none; outline: 2px dashed #eee;}
+button    {cursor: pointer;}
+.btn        { height:40px; line-height:38px; font-size:14px; font-weight:500;  background:#fff; border:1px solid #E0E0E0; white-space: nowrap; border-radius:4px;   }
+.btnOK      { height:40px; line-height:38px; font-size:14px; font-weight:500;  background:#FFDB1F; border:1px solid #FFDB1F; white-space: nowrap; border-radius:4px;   }
+.btnMore    { width:140px; height:40px; line-height:38px; font-size:14px; font-weight:500; border:1px solid #E0E0E0; background:#fff; white-space: nowrap; border-radius:20px;   }
+.btnClose   { width:26px; height:26px; background:url(../images/layer_close.png) no-repeat 0 0;  }
+.btnAdd     { height:26px; line-height:24px; padding:0 10px; border-radius: 12px; background:#333; color:#fff;  }
+.btnDel     { width:16px; height:16px; background: url(../images/btn_del.png) no-repeat 0 0; }
+
+
+a.btnCall            {position:relative; display:block; width:100%; height:60px; line-height:57px; padding:0 0 0 66px; font-size:14px; font-weight:500; border:1px solid #BDBDBD; background:#fff; white-space: nowrap; border-radius:8px; }
+a.btnCall::before    {content:""; position:absolute; left:24px; top:14px; width:32px; height:32px; background:url(../images/ico_callcenter.png) no-repeat 0 0;}
+a.btnCall::after     {content:""; position:absolute; right:16px; top:22px; width:16px; height:16px; background:url(../images/arrow_r_g.png) no-repeat 0 0;}
+
 
 
 /****************************
-**********  align  **********
+**********  main  **********
 *****************************/
+html  {overflow: hidden; overflow-y: scroll;}
+.wrap       { position:relative; width:360px; margin:0 auto; box-sizing: border-box; overflow: hidden;  }
+.menuOn .container       {display:none;  }
+.wrap header    { height:48px; padding:0 16px; }
+.wrap header .titBox    { float:left; font-size:16px; font-weight: 700; padding:13px 0 0; }
+.wrap header ul.icons       { float:right; padding:11px 0; }
+.wrap header ul.icons li    { float:left; margin-left:14px;  }
+.wrap header ul.icons li a          {display:block; width:26px; height:26px; }
+.wrap header ul.icons li a.alarm    { background:url(../images/gnb_alarm.png) no-repeat 50% 50%; }
+.wrap header ul.icons li a.menu    { background:url(../images/gnb_menu.png) no-repeat 50% 50%; }
+
+section.container   {}
+
+.bnrList           { padding:0 16px;  }
+.bnrList .bnr         { background:  no-repeat right 22px top 50%; border-radius: 8px; box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.06); }
+.bnrList .bnr.blue    { background:  no-repeat right 16px top 50%; background-color: #3F8AF8; box-shadow:none  }
+.bnrList .bnr a       { height:106px;  padding:24px 0 0 18px; border:1px solid #E0E0E0; margin-top:8px; border-radius: 8px; }
+.bnrList .bnr.blue a  { height:74px; border:0; padding:11px 0 0 16px; font-size: 16px;  margin-bottom:14px; color:#fff; }
+.bnrList .bnr a       {display:block;  }
+.bnrList .bnr span        { display:block; font-size:14px;  }
+.bnrList .bnr strong.tit  { display:block; font-size:20px; line-height:29px; margin-top:7px;  }
+.bnrList .bnr.blue strong.tit  { font-size:18px; line-height:1.4; margin-top:0px; }
+
+.usage      {margin-top:40px; padding:0 16px; }
+.usage .tit_arrow      {}
+.usage .tit_arrow a    {font-size: 16px; display:block; }
+.usage .tit_arrow a::after    {content:""; display:inline-block; width:16px; height:16px; vertical-align:-2px; background:url(../images/arrow_r_b.png) no-repeat 0; }
+
+ul.tab01          {display:flex; padding:0 16px; width:100%; margin:20px 0 0 -16px; gap:20px; box-sizing: content-box; justify-content: flex-start; border-bottom:1px solid #E0E0E0 }
+ul.tab01 li       {margin-bottom:-1px; }
+ul.tab01 li a     {display:block; height:28px; font-size:14px;  border-bottom:1px solid #E0E0E0 }
+ul.tab01 li.on a  {border-bottom:2px solid #FFDB1F }
+
+.tabContentWrap     {background:#f5f5f5; padding:16px; width:100%; margin-left:-16px; box-sizing: content-box;  }
+.tabContentWrap .nodata     { padding:32px 0; text-align: center;}
+.tabContentWrap ul.contList     {  }
+.tabContentWrap ul.contList > li     {background:#fff; padding:16px; border:1px solid #E0E0E0; overflow: hidden; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.06);}
+.tabContentWrap ul.contList > li + li     {margin-top:10px;}
+.tabContentWrap ul.contList li .btns  {display:flex; gap:8px; margin-top:24px;  }
+.tabContentWrap ul.contList li .btns button  {width:100%;  }
+.tabContentWrap ul.contList li .titBox    {display:flex; justify-content: space-between;}
+.tabContentWrap ul.contList li .titBox strong.tit    { font-size:16px; }
+.tabContentWrap ul.contList li .titBox strong.tit    { font-size:16px; }
+.tabContentWrap ul.contList li .titBox span.status    { font-size:14px; font-weight: 700; color:#828282 }
+.tabContentWrap ul.contList li .titBox span.status.arrive    { color:#4089F8;   }
+.tabContentWrap ul.contList li ul.addr    { margin-top:25px;  }
+.tabContentWrap ul.contList li ul.addr li    { display:flex; }
+.tabContentWrap ul.contList li ul.addr li + li { margin-top:10px; }
+.tabContentWrap ul.contList li ul.addr em    { width:42px;  }
+.moreWrap    { text-align: center; padding:16px 16px 32px; border-bottom:1px solid #E0E0E0; width:100%; margin-left:-16px; box-sizing: content-box; }
 
 
-/****************************
-**********  title  **********
-*****************************/
+.footer     {border-top:1px solid #E0E0E0; padding:0 16px 57px;   }
+.footer .customer     { padding:32px 0 0;}
+.footer .customer a   { font-size: 16px; font-weight: 700; }
+.footer .customer a::after   {content:""; display:inline-block; margin-left:4px; width:16px; height:16px; vertical-align: -2px; background:url(../images/arrow_r_b.png) no-repeat 0 0; }
+.footer ul.links      {}
+.footer ul.links li   {margin-top:20px; }
+.footer ul.links li a   {font-weight: 500;}
+.footer .callCenterBox   { margin-top:16px;  }
+.footer .callCenterBox   { margin-top:16px;  }
 
 
-/****************************
-**********  list  **********
-*****************************/
+.menuOn .myMenuWrap       {left:0; position:relative; transition: .4s;   }
+.myMenuWrap       {position:absolute; left:100%; top:0; background:#fff; width:360px; min-height:100vh;  }
+.myMenuWrap .titBox       {overflow: hidden; padding:8px 30px; justify-content: space-between; }
+.myMenuWrap .titBox h2    {float:left; font-size: 22px; padding-right:20px; background: url(../images/arrow_more.png) no-repeat 100% 50%; }
+.myMenuWrap .titBox button    {float:right;}
+.myMenuWrap .pointInfo   {padding:8px 24px 16px; border-bottom:10px solid #F5F5F5; }
+.myMenuWrap .pointInfo a   {display:flex; width:100%; padding-right:20px; justify-content: space-between; background: url(../images/arrow_more.png) no-repeat 100% 50%;}
+.myMenuWrap .pointInfo a:hover   {text-decoration: none;}
+.myMenuWrap .pointInfo a em {font-weight: 700; margin:8px 0 0; }
+.myMenuWrap .pointInfo a strong {font-size: 22px; color:#F49B3E;}
+.myMenuWrap .pointInfo a strong span {font-size: 16px; font-weight: 400; color:#333; }
+.myMenuWrap .pointInfo p {margin-top:12px; font-size: 12px; font-weight: 400; }
 
 
-/****************************
-**********  section  **********
-*****************************/
+.myMenuWrap ul.majorLinks     {padding:0 26px; border-top:10px solid #F5F5F5; display:flex; flex-wrap: wrap;    }
+.myMenuWrap ul.majorLinks li  { width:102px; height:119px; text-align: center;   }
+.myMenuWrap ul.majorLinks li a  { display:block; height:119px; padding-top:58px;   }
+.myMenuWrap ul.majorLinks li a span  {display:flex; width:100%; height:40px; justify-content: center; }
+.myMenuWrap ul.majorLinks li a span em  {margin:auto 0}
+.myMenuWrap ul.majorLinks li.item_1 a   {background: url(../images/ico_major_1.png) no-repeat 50% 20px;}
+.myMenuWrap ul.majorLinks li.item_2 a   {background: url(../images/ico_major_2.png) no-repeat 50% 20px;}
+.myMenuWrap ul.majorLinks li.item_3 a   {background: url(../images/ico_major_3.png) no-repeat 50% 20px;}
+.myMenuWrap ul.majorLinks li.item_4 a   {background: url(../images/ico_major_4.png) no-repeat 50% 20px;}
+.myMenuWrap ul.majorLinks li.item_5 a   {background: url(../images/ico_major_5.png) no-repeat 50% 20px;}
+
+.myMenuWrap ul.customerLink     {border-top:10px solid #F5F5F5; padding-bottom:90px;  }
+.myMenuWrap ul.customerLink li  {margin-top:24px;  }
+.myMenuWrap ul.customerLink li a  {display:block; background: url(../images/arrow_more.png) no-repeat 100% 50%;}
+
+.myMenuWrap .couponPoint  { padding:24px; display:flex;  }
+.myMenuWrap .couponPoint .item  {width:100%;  }
+.myMenuWrap .couponPoint .item .tit  {padding-left:27px; }
+.myMenuWrap .couponPoint .item.money    {min-width:204px;}
+.myMenuWrap .couponPoint .item.money .tit   { padding-bottom:3px; background: url(../images/money.png) no-repeat 0 2px; }
+.myMenuWrap .couponPoint .item.coupon .tit  { padding-bottom:3px; background: url(../images/coupon.png) no-repeat 0 2px; }
+.myMenuWrap .couponPoint .item .tit a  {display:inline-block; padding-right:20px; background: url(../images/arrow_more.png) no-repeat 100% 50%; }
+.myMenuWrap .couponPoint .item strong.count  {display:block; font-size:24px; margin:5px 0 15px;  }
+.myMenuWrap .couponPoint .item .btns  {display:flex; gap:6px;  }
+.myMenuWrap .couponPoint .item .btns a  {height:34px; line-height:32px; border-radius: 17px; padding:0 16px; }
+
+
+.myMenuWrap .credit { border-top:1px solid #F2F2F2;  }
+.myMenuWrap .credit a { display:flex; width:100%; padding:20px 44px 20px 24px; justify-content: space-between; background: url(../images/arrow_more.png) no-repeat right 24px  top 50%;}
+.myMenuWrap .credit a:hover {text-decoration: none;}
+.myMenuWrap .credit a em   { display:inline-block; padding-left:38px; font-size: 16px; font-weight: 700; background: url(../images/ico_card.png) no-repeat 0 50%;}
+.myMenuWrap .credit a span {color:#FF5757; }
+
+
+/* */
+.map          {height:320px; }
+
+ul.managerContact     {padding:7px 16px 24px; }
+ul.managerContact li  {display:flex; margin-top:25px;  }
+ul.managerContact li strong  {width:90px;   }
+ul.managerContact li.form strong  { margin:8px 0 0 }
+ul.managerContact li div  {flex:1;}
+ul.managerContact li div.info  {display:flex; justify-content: space-between; }
+ul.managerContact li div.info span.phone  {font-size: 16px; }
+ul.managerContact li div.info a  {color:#4089F8; font-weight: 500; text-decoration: underline; }
+ul.managerContact li.form strong  { margin:8px 0 0 }
+ul.managerContact li.form .chkWrap  { padding:12px 0 0;  }
+
+
+.inputWrap      {position:relative; }
+.inputWrap input[type=text]     {padding-right:35px; }
+.inputWrap .btnDel      {position:absolute; right:12px; top:12px; padding:0; }
+input[type=text]    { width:100%; height:40px; padding-left:12px; border-radius: 6px;  border:1px solid #E0E0E0; }
+input[type=text]::placeholder,
+input[type=text]::-webkit-input-placeholder    { font-size: 14px; color:#BDBDBD; font-weight: 350; }
+input[type=checkbox]    {display:none;  }
+input[type=checkbox] + label    { cursor: pointer; padding-left:20px; display:inline-block; min-height:20px; background: url(../images/checkbox_normal.png) no-repeat 0 50%; }
+input[type=checkbox]:checked + label  { background: url(../images/checkbox_press.png) no-repeat 0 50%; }
+input[type=checkbox]:disabled + label { background: url(../images/checkbox_disabled.png) no-repeat 0 50%; }
+input[type=checkbox] + label span    { padding-left:8px; display:inline-block; }
+
+
+.carInfoForm   {padding:0 16px 24px; border-top:10px solid #F5F5F5}
+.carInfoForm h3  {margin-top:24px; margin-bottom:10px; }
+.carInfoForm input[type=text]  {height:50px; font-size: 16px; }
+.carInfoForm ul.carType  {display:flex; gap:8px; }
+.carInfoForm ul.carType li  {width:100%; height:64px;  }
+.carInfoForm ul.carType li input[type=radio]  {display:none; }
+.carInfoForm ul.carType li label  {display:block; width:100%; height:64px; padding:37px 0 0;  font-size: 13px; text-align: center; border:1px solid #E0E0E0; border-radius: 8px;   }
+.carInfoForm ul.carType li input:checked + label  {background-color: #FFDB1F; border-color:#FFDB1F; font-weight: 700; }
+.carInfoForm ul.carType li.car_1 label  {background: url(../images/car_type_1.png) no-repeat 50% 8px;}
+.carInfoForm ul.carType li.car_2 label  {background: url(../images/car_type_2.png) no-repeat 50% 8px;}
+.carInfoForm ul.carType li.car_3 label  {background: url(../images/car_type_3.png) no-repeat 50% 8px;}
+.carInfoForm ul.carType li.car_4 label  {background: url(../images/car_type_4.png) no-repeat 50% 8px;}
+
+.addressSetBox      {padding:0 16px; border-top:10px solid #F5F5F5}
+.addressSetBox.line      {border-top:1px solid #E0E0E0; border-bottom:1px solid #E0E0E0;padding:20px 0 10px; }
+.addressSetBox .form      { }
+.addressSetBox .form a    { display:block; font-size: 16px; font-weight: 500; padding:24px 0; background:url(../images/arrow_r_g.png) no-repeat 100% 50%; }
+.addressSetBox .form .tit { padding:0 0 16px;  }
+
+.addressSetBox ul.over       { padding-bottom:16px;  }
+.addressSetBox ul.over li    {display:flex;  justify-content: space-between;  }
+.addressSetBox ul.over li + li    {margin-top:16px; }
+.addressSetBox ul.over li span.ico_1::before    {content:''; display:inline-block; width: 0px;height: 0px; border-top: 8px solid #FFF5A5; margin-right:10px; border-right: 5px solid transparent; border-left: 5px solid transparent; border-bottom: 1px solid transparent;}
+.addressSetBox ul.over li span.ico_2::before    {content:''; display:inline-block; width: 0px;height: 0px; border-top: 8px solid #FFDB1F; margin-right:10px; border-right: 5px solid transparent; border-left: 5px solid transparent; border-bottom: 1px solid transparent;}
+.addressSetBox ul.over li span.ico_3::before    {content:''; display:inline-block; width: 0px;height: 0px; border-top: 8px solid #B7960F; margin-right:10px; border-right: 5px solid transparent; border-left: 5px solid transparent; border-bottom: 1px solid transparent;}
+
+.addressSetBox .tit    {display:flex; justify-content: space-between; padding:5px 0 10px; }
+.addressSetBox .tit strong   {font-size: 16px; font-weight: 500; }
+.addressSetBox .tit strong span   {vertical-align: 0; padding-left:20px;}
+.addressSetBox .to .search      {position: relative;}
+.addressSetBox .to .search input[type=text]      {padding-right:40px; height:54px; border:1px solid #FFDB1F; }
+.addressSetBox .to .search .btnSearch      {position: absolute; top:18px; right:12px; width:24px; height:24px; background: url(../images/ico_search.png) no-repeat 0 0; }
+
+
+.btBtns      {padding:32px 0; display:flex; gap:8px; }
+.btBtns a    {width:100%; text-align: center; height:48px; line-height:46px; border-radius: 24px;; }
+.btBtns .btn    {border:2px solid #FFDB1F; }
+
+
+
+
+/* 탁송 요금확인 */
+.selectWrap    {display:flex; gap:8px;  }
+.selectWrap input.select {width:100%; height:40px; padding:0 20px 0 16px; border:1px solid #E0E0E0; border-radius:6px; background:url(../images/arrow_down_b.png) no-repeat right 11px top 50% }
+
+textarea      {width:100%; height:80px; padding:8px 12px; border:1px solid #E0E0E0; border-radius:6px; font-size: 14px; }
+textarea::placeholder      {font-size: 14px; color:#BDBDBD }
+
+.paySetting     {padding:24px 16px 0px; }
+.paySetting .distance     {text-align: center; padding-bottom:13px;}
+.paySetting .distance span     {position:relative; display:inline-block; height:32px; line-height:32px; padding:0 14px; color:#B7960F; background-color: #FFF5A5; border-radius: 4px;  }
+.paySetting .distance span::after     {content:""; display:block; margin:0 auto; width: 0px;height: 0px; border-top: 8px solid #FFF5A5; border-right: 5px solid transparent; border-left: 5px solid transparent; border-bottom: 1px solid transparent;}
+.paySetting .distance span strong     {color:#7A5F05;  }
+.paySetting .payBox     {}
+.paySetting .payBox em.tit    {display:block; text-align: center; font-weight:500; }
+.paySetting .payBox .calc     {padding:0 24px; display:flex; justify-content: space-between; }
+.paySetting .payBox .calc strong      {font-size: 26px;  }
+.paySetting .payBox .calc button     {width:28px; height:28px; margin-top:5px; }
+.paySetting .payBox .calc button.minus   {background: url(../images/minus.png) no-repeat;}
+.paySetting .payBox .calc button.plus    {background: url(../images/plus.png) no-repeat;}
+
+/* 레이어 */

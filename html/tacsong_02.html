@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>차부바</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+<link rel="stylesheet" href="../css/common.css">
+
+<script src="../js/juqery-3.7.0.min.js"></script>
+<script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script src="../js/common.js"></script>
+</head>
+<body>
+
+  <div class="wrap">
+    <section class="container">
+      <div class="map">
+        <img src="../images/img_map.png" alt="">
+      </div>
+      <div class="carInfoForm">
+        <h3>탁송 출발 예정시간</h3>
+        <div class="selectWrap">
+          <input type="text" class="select" placeholder="yyyy-mm-dd" readonly>
+          <input type="text" class="select" placeholder="24 : 00" readonly>
+        </div>
+        <h3>메모</h3>
+        <textarea name="" id="" cols="30" rows="10" placeholder="자동차 위치 및 전달하실 내용을 남겨주세요."></textarea>
+      </div>
+
+      <div class="addressSetBox line">
+        <div class="form">
+          <div class="tit">
+            <strong>출발 <span>서울 강서구 양천로 583</span></strong>
+          </div>
+        </div>
+        <ul class="over">
+          <li><span class="ico_1">서울 강서구 양천로 583</span> <button type="button" class="btnDel"></button></li>
+          <li><span class="ico_2">서울 강서구 양천로 583</span> <button type="button" class="btnDel"></button></li>
+          <li><span class="ico_3">서울 강서구 양천로 583</span> <button type="button" class="btnDel"></button></li>
+        </ul>
+        <div class="to">
+          <div class="tit">
+            <strong>도착 <span>서울 강서구 양천로 583</span></strong> <a href="#" class="btnAdd">+ 경유</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="paySetting">
+        <div class="distance">
+          <span>예상이동 거리 : <strong>149.5km</strong></span>
+        </div>
+        <div class="payBox">
+          <em class="tit">호출 요금</em>
+          <div class="calc">
+            <button type="button" class="minus"><span class="hide">-</span></button>
+            <strong>34,000원</strong>
+            <button type="button" class="plus"><span class="hide">+</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="btBtns">
+        <a href="#" class="btn">전화로 호출</a>
+        <a href="#" class="btnOK">앱으로 호출</a>
+      </div>
+    </section>
+  </div>
+
+
+
+</body>
+</html>
