@@ -12,7 +12,7 @@ label {cursor: pointer;}
 *****************************/
 
 a[class^=btn]   {display:inline-block; padding:0 16px;}
-a[class^=btn]:hover   {text-decoration: none; outline: 2px dashed #eee;}
+a[class^=btn]:hover   {text-decoration: none; }
 button    {cursor: pointer;}
 .btn        { height:40px; line-height:38px; font-size:14px; font-weight:500;  background:#fff; border:1px solid #E0E0E0; white-space: nowrap; border-radius:4px;   }
 .btnOK      { height:40px; line-height:38px; font-size:14px; font-weight:500;  background:#FFDB1F; border:1px solid #FFDB1F; white-space: nowrap; border-radius:4px;   }
@@ -20,7 +20,12 @@ button    {cursor: pointer;}
 .btnClose   { width:26px; height:26px; background:url(../images/layer_close.png) no-repeat 0 0;  }
 .btnAdd     { height:26px; line-height:24px; padding:0 10px; border-radius: 12px; background:#333; color:#fff;  }
 .btnDel     { width:16px; height:16px; background: url(../images/btn_del.png) no-repeat 0 0; }
+.btnCall    { height:40px; line-height:38px; font-size:14px; font-weight:500; color:#fff; background:#2DDA53; border:1px solid #2DDA53; white-space: nowrap; border-radius:4px;    }
 
+
+.btBtns      {padding:32px 0; display:flex; gap:8px; }
+.btBtns a    {width:100%; text-align: center; height:48px; line-height:46px; border-radius: 24px;; }
+.btBtns .btn    {border:2px solid #FFDB1F; }
 
 a.btnCall            {position:relative; display:block; width:100%; height:60px; line-height:57px; padding:0 0 0 66px; font-size:14px; font-weight:500; border:1px solid #BDBDBD; background:#fff; white-space: nowrap; border-radius:8px; }
 a.btnCall::before    {content:""; position:absolute; left:24px; top:14px; width:32px; height:32px; background:url(../images/ico_callcenter.png) no-repeat 0 0;}
@@ -204,11 +209,6 @@ input[type=checkbox] + label span    { padding-left:8px; display:inline-block; }
 .addressSetBox .to .search .btnSearch      {position: absolute; top:18px; right:12px; width:24px; height:24px; background: url(../images/ico_search.png) no-repeat 0 0; }
 
 
-.btBtns      {padding:32px 0; display:flex; gap:8px; }
-.btBtns a    {width:100%; text-align: center; height:48px; line-height:46px; border-radius: 24px;; }
-.btBtns .btn    {border:2px solid #FFDB1F; }
-
-
 
 
 /* 탁송 요금확인 */
@@ -223,12 +223,129 @@ textarea::placeholder      {font-size: 14px; color:#BDBDBD }
 .paySetting .distance span     {position:relative; display:inline-block; height:32px; line-height:32px; padding:0 14px; color:#B7960F; background-color: #FFF5A5; border-radius: 4px;  }
 .paySetting .distance span::after     {content:""; display:block; margin:0 auto; width: 0px;height: 0px; border-top: 8px solid #FFF5A5; border-right: 5px solid transparent; border-left: 5px solid transparent; border-bottom: 1px solid transparent;}
 .paySetting .distance span strong     {color:#7A5F05;  }
-.paySetting .payBox     {}
-.paySetting .payBox em.tit    {display:block; text-align: center; font-weight:500; }
-.paySetting .payBox .calc     {padding:0 24px; display:flex; justify-content: space-between; }
-.paySetting .payBox .calc strong      {font-size: 26px;  }
-.paySetting .payBox .calc button     {width:28px; height:28px; margin-top:5px; }
-.paySetting .payBox .calc button.minus   {background: url(../images/minus.png) no-repeat;}
-.paySetting .payBox .calc button.plus    {background: url(../images/plus.png) no-repeat;}
+.payBox     {}
+.payBox em.tit    {display:block; text-align: center; font-weight:500; }
+.payBox .calc     {padding:0 24px; display:flex; justify-content: space-between; }
+.payBox .calc strong      {font-size: 26px;   }
+.payBox .calc button     {width:28px; height:28px; margin-top:5px; }
+.layerCont .payBox        {}
+.layerCont .payBox .calc button     {padding:0; flex:0; min-width:28px;}
+.payBox .calc button.minus   {background: url(../images/minus.png) no-repeat;}
+.payBox .calc button.plus    {background: url(../images/plus.png) no-repeat;}
+
+
+/* 레이어 팝업 */
+
+.layerWrap.show         {top:0; }
+.layerWrap.show::before   {opacity: 1; transition: .3s;}
+.layerWrap.show .layerBody   {transition:.3s .1s; transform: translateY(0);  opacity: 1;}
+.layerWrap.show.bottom .layerBody   {transition:.3s .1s; transform: translateY(0);  opacity: 1;}
+
+.layerWrap      {position:fixed; display:flex; z-index:1000; left:50%; top:100%; width:100%; height:100%;  transform: translateX(-50%); justify-content: center; }
+.layerWrap::before      {content: ''; position:absolute; width:100%; height:100%; opacity:0; background:rgba(0,0,0,0.5); }
+.layerWrap .layerBody   { position:relative;  z-index:10;  display:flex; flex-direction: column; margin:auto; width:336px; min-height:190px; overflow: hidden; opacity: 0; background:#fff; border-radius: 4px; transform: translateY(25%);   }
+.layerWrap .layerBody .layerClose   {display:none; position: absolute; right:16px; top:20px; width:24px; height:24px; background: url(../images/layer_close.png) no-repeat;}
+.layerWrap.bottom      {}
+.layerWrap.bottom .layerBody   {width:360px; margin:auto auto 0; border-radius: 8px 8px 0 0; overflow: hidden; transform: translateY(100%);  }
+.layerWrap.bottom .layerBody .layerClose   {display:block; }
+.layerWrap.bottom .layerBtn   {padding:0 16px 24px; gap:10px  }
+.layerWrap.bottom .layerBtn button   {border-radius: 24px;}
+.layerWrap.bottom .layerBtn button   {border-radius: 24px;}
+
+.layerWrap .layerBtn   { width:100%; display:flex; margin-top:auto;  }
+.layerWrap .layerBtn button   { width:100%; height:48px; text-align: center; border-radius: 0; }
+.layerWrap .layerBtn button.btn   { border:0; background:#F5F5F5;  }
+.layerWrap .layerBtn .btnOK   { min-width:60%}
+.layerWrap .layerBody .ment   { display:flex; height:150px;  }
+.layerWrap .layerBody .ment p   {margin: auto;}
+.layerWrap .layerCont   { padding:18px 20px 24px; max-height: calc(100vh - 65px); overflow: auto; }
+.layerWrap .managerContact .titBox   { display:flex; padding:0  0 15px 0; justify-content: space-between;}
+.layerWrap .managerContact .titBox strong    {font-size:16px; font-weight: 400; }
+.layerWrap .managerContact .titBox button    {flex:0; white-space: nowrap; font-size:14px; }
+.error    {font-size: 12px; color:#FF5757; margin-top:6px; }
+
+.layerWrap .payType .tit     {font-size: 20px; ;}
+.layerWrap .payType .payInfo     {padding:12px 0 0; line-height: 110%; font-size: 16px;;}
+.layerWrap .payType .payInfo strong    {color:#F49B3E;}
+.layerWrap .payType ~ .layerBtn     {}
+.layerWrap .payType ~ .layerBtn button     {display:flex; padding:16px; height:130px; flex-direction: column;  }
+.layerWrap .payType ~ .layerBtn button strong     { font-size:20px;  }
+.layerWrap .payType ~ .layerBtn button span       { font-size:16px; line-height: 17px; font-weight: 400;   }
+.layerWrap .payType ~ .layerBtn button.btn        { border:1px solid #E0E0E0; color:#828282; }
+.layerWrap .payType ~ .layerBtn button.type01     {background:url(../images/pay_company.png) no-repeat right 18px bottom 18px #FFDB1F;}
+.layerWrap .payType ~ .layerBtn button.type02     {background:url(../images/pay_personal.png) no-repeat right 18px bottom 18px #fff;}
+
+.layerWrap .paymentConfirm     {padding:8px 0 0;  }
+.layerWrap .paymentConfirm .titBox     { }
+.layerWrap .paymentConfirm .titBox > em       {display:block; font-size:16px; font-weight: 700;   }
+.layerWrap .paymentConfirm .titBox > strong   {display:block; font-size:26px; font-weight: 700;   }
+.layerWrap .paymentConfirm .titBox P.tip    {padding-left:20px; font-size: 14px; color:#FF5757;  background:url(../images/warning.png) no-repeat 0 50%; }
+.layerWrap .paymentConfirm ul.payInfo       {padding:20px 0;}
+.layerWrap .paymentConfirm ul.payInfo li    { display:flex; justify-content: space-between; margin-top:6px; font-size: 16px; line-height:24px;}
+.layerWrap .paymentConfirm ul.payInfo li em    { color:#77889C;}
+.layerWrap .paymentConfirm ul.payInfo li span  {}
+.layerWrap .paymentConfirm .paytime     {display:flex; height:48px; padding:8px 12px; justify-content: space-between; background:#FFF5A5; border-radius: 24px;;}
+.layerWrap .paymentConfirm .paytime span      {margin:auto 0; font-size: 16px; }
+.layerWrap .paymentConfirm .paytime button    {height:32px; border-radius: 16px; padding:0 14px; flex:none}
+
+.layerWrap .paymentConfirm .payPoint    {border-top:1px solid #D7E2E4; padding:17px 20px 0; width:100%; margin-left:-20px; box-sizing: content-box; }
+.layerWrap .paymentConfirm .payPoint em   {display:inline-block; padding:0 10px; line-height:20px; background:#3E82F4; color:#fff;    }
+.layerWrap .paymentConfirm .payPoint p    {margin-top:9px; color:#3E82F4; }
+
+
+.layerWrap .datepicker .tit    {text-align: center; font-size: 16px; font-weight: 700;}
+.layerWrap .datepicker ~ .layerBtn    {padding:0 24px 32px; gap:10px;}
+.layerWrap .datepicker ~ .layerBtn button   {border-radius: 8px;}
+.layerWrap .datepicker ~ .layerBtn .btn     {background:#fff; border:1px solid #E0E0E0}
+.layerWrap .datepicker ~ .layerBtn .btnOK   {min-width: 10%;}
+.layerWrap .ui-widget-content    {width:100%; box-shadow: none; padding:0; margin:30px 0 0; }
+.layerWrap .ui-datepicker .ui-datepicker-header   {padding:0; }
+.layerWrap .ui-datepicker .ui-datepicker-title    {font-size: 20px; line-height: 30px;  }
+.layerWrap .ui-datepicker .ui-datepicker-prev     { background: url(../images/arrow_l_b.png) no-repeat 50% 50%; left:50px;}
+.layerWrap .ui-datepicker .ui-datepicker-next     { background: url(../images/arrow_r_b.png) no-repeat 50% 50%; right:50px;}
+.layerWrap .ui-state-default, 
+.layerWrap .ui-widget-content .ui-state-default, 
+.layerWrap .ui-widget-header .ui-state-default    {border:0; margin:0 auto; border-radius: 8px;}
+.ui-datepicker td span, .ui-datepicker td a   {padding:0; }
+
+.ui-datepicker th   {color:#333;}
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight, 
+.ui-widget-header .ui-state-highlight   {background:#ddd; color:#333}
+
+.ui-state-active, 
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active     {background:#F49B3E; color:#fff !important; }
+
+.ui-datepicker-week-end .ui-state-default  {color:#FF5757}
+.ui-datepicker-week-end ~ .ui-datepicker-week-end .ui-state-default  {color:#3E82F4}
+
+
+
+.timepicker       {}
+.timepicker .layerClose{display:none !important; }
+.timepicker .tit       {position:relative; text-align: center; font-size: 16px; font-weight: 700; padding-bottom:15px; }
+.timepicker .tit span.chk  {position:absolute; right:0; top:2px;  }
+.timepicker .tit span.chk label  {font-size: 12px; vertical-align: top; line-height:20px; }
+.timepicker .timePick  {position:relative; display:flex; height:200px; overflow: hidden; justify-content: center; font-size:24px; }
+.timepicker .timePick .hour   { position:relative; z-index:5; width:36px; overflow: scroll; overflow-x: hidden; }
+.timepicker .timePick .txt    { position:relative; z-index:5; margin:auto 0; padding:0 8px; }
+.timepicker .timePick .minute { position:relative; z-index:5; width:36px; overflow: scroll; overflow-x: hidden; }
+.timepicker .timePick div::-webkit-scrollbar {  display: none;}
+.timepicker .timePick div button {width:100%; padding:0; font-size:24px;height:36px; background: transparent; text-align: center; color:#BDBDBD }
+.timepicker .timePick div button.on {color:#333 }
+.timepicker .timePick ul {}
+.timepicker .timePick ul li { height:40px;  }
+.timepicker .timePick span.focus { position:absolute; z-index: 1; top:82px; width:100%; height:36px; background:#FFDB1F; opacity: .3; border-radius: 8px; }
+/* .timepicker .timePick span.focus1 { position:absolute; z-index: 10; top:42px; width:100%; height:36px; background:#fff;  opacity: .5; border-radius: 8px; }
+.timepicker .timePick span.focus2 { position:absolute; z-index: 10; top:122px; width:100%; height:36px; background:#fff; opacity: .5; border-radius: 8px; } */
+.timepicker .timePick span.focus3 { position:absolute; z-index: 10; top:0px; width:100%; height:40px; background:#fff;   opacity: .8; border-radius: 8px; }
+.timepicker .timePick span.focus4 { position:absolute; z-index: 10; top:162px; width:100%; height:40px; background:#fff; opacity: .8; border-radius: 8px; }
+
+.layerWrap.bottom .timepicker .layerBtn    {padding:0 24px 32px; gap:10px;}
+.layerWrap.bottom .timepicker .layerBtn button   {border-radius: 8px;}
+.layerWrap.bottom .timepicker .layerBtn .btn     {background:#fff; border:1px solid #E0E0E0}
+.layerWrap.bottom .timepicker .layerBtn .btnOK   {min-width: 10%;}
+
 
 /* 레이어 */
