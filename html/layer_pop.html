@@ -27,124 +27,10 @@
         <button type="button" class="btn" id="layerBtn_6">날짜 예약</button>
         <button type="button" class="btn" id="layerBtn_7">시간 예약</button>
         <button type="button" class="btn" id="layerBtn_8">전화연결</button>
+        <button type="button" class="btn" id="layerBtn_9">요금변경</button>
       </div>
     </section>
   </div>
-
-
-<style>
-.layerWrap.show         {top:0; }
-.layerWrap.show::before   {opacity: 1; transition: .3s;}
-.layerWrap.show .layerBody   {transition:.3s .1s; transform: translateY(0);  opacity: 1;}
-.layerWrap.show.bottom .layerBody   {transition:.3s .1s; transform: translateY(0);  opacity: 1;}
-
-.layerWrap      {position:fixed; display:flex; z-index:1000; left:50%; top:100%; width:100%; height:100%;  transform: translateX(-50%); justify-content: center; }
-.layerWrap::before      {content: ''; position:absolute; width:100%; height:100%; opacity:0; background:rgba(0,0,0,0.5); }
-.layerWrap .layerBody   { position:relative;  z-index:10;  display:flex; flex-direction: column; margin:auto; width:336px; min-height:190px; overflow: hidden; opacity: 0; background:#fff; border-radius: 4px; transform: translateY(25%);   }
-.layerWrap .layerBody .layerClose   {display:none; position: absolute; right:16px; top:20px; width:24px; height:24px; background: url(../images/layer_close.png) no-repeat;}
-.layerWrap.bottom      {}
-.layerWrap.bottom .layerBody   {width:360px; margin:auto auto 0; border-radius: 8px 8px 0 0; overflow: hidden; transform: translateY(100%);  }
-.layerWrap.bottom .layerBody .layerClose   {display:block; }
-.layerWrap.bottom .layerBtn   {padding:0 16px 24px; gap:10px  }
-.layerWrap.bottom .layerBtn button   {border-radius: 24px;}
-.layerWrap.bottom .layerBtn button   {border-radius: 24px;}
-
-.layerWrap .layerBtn   { width:100%; display:flex; margin-top:auto;  }
-.layerWrap .layerBtn button   { width:100%; height:48px; text-align: center; border-radius: 0; }
-.layerWrap .layerBtn button.btn   { border:0; background:#F5F5F5;  }
-.layerWrap .layerBtn .btnOK   { min-width:60%}
-.layerWrap .layerBody .ment   { display:flex; height:150px;  }
-.layerWrap .layerBody .ment p   {margin: auto;}
-.layerWrap .layerCont   { padding:18px 20px 24px; }
-.layerWrap .managerContact .titBox   { display:flex; padding:0  0 15px 0; justify-content: space-between;}
-.layerWrap .managerContact .titBox strong    {font-size:16px; font-weight: 400; }
-.layerWrap .managerContact .titBox button    {flex:0; white-space: nowrap; font-size:14px; }
-.error    {font-size: 12px; color:#FF5757; margin-top:6px; }
-
-.layerWrap .payType .tit     {font-size: 20px; ;}
-.layerWrap .payType .payInfo     {padding:12px 0 0; line-height: 110%; font-size: 16px;;}
-.layerWrap .payType .payInfo strong    {color:#F49B3E;}
-.layerWrap .payType ~ .layerBtn     {}
-.layerWrap .payType ~ .layerBtn button     {display:flex; padding:16px; height:130px; flex-direction: column;  }
-.layerWrap .payType ~ .layerBtn button strong     { font-size:20px;  }
-.layerWrap .payType ~ .layerBtn button span       { font-size:16px; line-height: 17px; font-weight: 400;   }
-.layerWrap .payType ~ .layerBtn button.btn        { border:1px solid #E0E0E0; color:#828282; }
-.layerWrap .payType ~ .layerBtn button.type01     {background:url(../images/pay_company.png) no-repeat right 18px bottom 18px #FFDB1F;}
-.layerWrap .payType ~ .layerBtn button.type02     {background:url(../images/pay_personal.png) no-repeat right 18px bottom 18px #fff;}
-
-.layerWrap .paymentConfirm     {padding:8px 0 0;  }
-.layerWrap .paymentConfirm .titBox     { }
-.layerWrap .paymentConfirm .titBox > em       {display:block; font-size:16px; font-weight: 700;   }
-.layerWrap .paymentConfirm .titBox > strong   {display:block; font-size:26px; font-weight: 700;   }
-.layerWrap .paymentConfirm .titBox P.tip    {padding-left:20px; font-size: 14px; color:#FF5757;  background:url(../images/warning.png) no-repeat 0 50%; }
-.layerWrap .paymentConfirm ul.payInfo       {padding:20px 0;}
-.layerWrap .paymentConfirm ul.payInfo li    { display:flex; justify-content: space-between; margin-top:6px; font-size: 16px; line-height:24px;}
-.layerWrap .paymentConfirm ul.payInfo li em    { color:#77889C;}
-.layerWrap .paymentConfirm ul.payInfo li span  {}
-.layerWrap .paymentConfirm .paytime     {display:flex; height:48px; padding:8px 12px; justify-content: space-between; background:#FFF5A5; border-radius: 24px;;}
-.layerWrap .paymentConfirm .paytime span      {margin:auto 0; font-size: 16px; }
-.layerWrap .paymentConfirm .paytime button    {height:32px; border-radius: 16px; padding:0 14px; flex:none}
-
-.layerWrap .paymentConfirm .payPoint    {border-top:1px solid #D7E2E4; padding:17px 20px 0; width:100%; margin-left:-20px; box-sizing: content-box; }
-.layerWrap .paymentConfirm .payPoint em   {display:inline-block; padding:0 10px; line-height:20px; background:#3E82F4; color:#fff;    }
-.layerWrap .paymentConfirm .payPoint p    {margin-top:9px; color:#3E82F4; }
-
-
-.layerWrap .datepicker .tit    {text-align: center; font-size: 16px; font-weight: 700;}
-.layerWrap .datepicker ~ .layerBtn    {padding:0 24px 32px; gap:10px;}
-.layerWrap .datepicker ~ .layerBtn button   {border-radius: 8px;}
-.layerWrap .datepicker ~ .layerBtn .btn     {background:#fff; border:1px solid #E0E0E0}
-.layerWrap .datepicker ~ .layerBtn .btnOK   {min-width: 10%;}
-.layerWrap .ui-widget-content    {width:100%; box-shadow: none; padding:0; margin:30px 0 0; }
-.layerWrap .ui-datepicker .ui-datepicker-header   {padding:0; }
-.layerWrap .ui-datepicker .ui-datepicker-title    {font-size: 20px; line-height: 30px;  }
-.layerWrap .ui-datepicker .ui-datepicker-prev     { background: url(../images/arrow_l_b.png) no-repeat 50% 50%; left:50px;}
-.layerWrap .ui-datepicker .ui-datepicker-next     { background: url(../images/arrow_r_b.png) no-repeat 50% 50%; right:50px;}
-.layerWrap .ui-state-default, 
-.layerWrap .ui-widget-content .ui-state-default, 
-.layerWrap .ui-widget-header .ui-state-default    {border:0; margin:0 auto; border-radius: 8px;}
-.ui-datepicker td span, .ui-datepicker td a   {padding:0; }
-
-.ui-datepicker th   {color:#333;}
-.ui-state-highlight,
-.ui-widget-content .ui-state-highlight, 
-.ui-widget-header .ui-state-highlight   {background:#ddd; color:#333}
-
-.ui-state-active, 
-.ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active     {background:#F49B3E; color:#fff !important; }
-
-.ui-datepicker-week-end .ui-state-default  {color:#FF5757}
-.ui-datepicker-week-end ~ .ui-datepicker-week-end .ui-state-default  {color:#3E82F4}
-
-
-
-.timepicker       {}
-.timepicker .layerClose{display:none !important; }
-.timepicker .tit       {position:relative; text-align: center; font-size: 16px; font-weight: 700; padding-bottom:15px; }
-.timepicker .tit span.chk  {position:absolute; right:0; top:2px;  }
-.timepicker .tit span.chk label  {font-size: 12px; vertical-align: top; line-height:20px; }
-.timepicker .timePick  {position:relative; display:flex; height:200px; overflow: hidden; justify-content: center; font-size:24px; }
-.timepicker .timePick .hour   { position:relative; z-index:5; width:36px; overflow: scroll; overflow-x: hidden; }
-.timepicker .timePick .txt    { position:relative; z-index:5; margin:auto 0; padding:0 8px; }
-.timepicker .timePick .minute { position:relative; z-index:5; width:36px; overflow: scroll; overflow-x: hidden; }
-.timepicker .timePick div::-webkit-scrollbar {  display: none;}
-.timepicker .timePick div button {width:100%; padding:0; font-size:24px;height:36px; background: transparent; text-align: center; color:#BDBDBD }
-.timepicker .timePick div button.on {color:#333 }
-.timepicker .timePick ul {}
-.timepicker .timePick ul li { height:40px;  }
-.timepicker .timePick span.focus { position:absolute; z-index: 1; top:82px; width:100%; height:36px; background:#FFDB1F; opacity: .3; border-radius: 8px; }
-/* .timepicker .timePick span.focus1 { position:absolute; z-index: 10; top:42px; width:100%; height:36px; background:#fff;  opacity: .5; border-radius: 8px; }
-.timepicker .timePick span.focus2 { position:absolute; z-index: 10; top:122px; width:100%; height:36px; background:#fff; opacity: .5; border-radius: 8px; } */
-.timepicker .timePick span.focus3 { position:absolute; z-index: 10; top:0px; width:100%; height:40px; background:#fff;   opacity: .8; border-radius: 8px; }
-.timepicker .timePick span.focus4 { position:absolute; z-index: 10; top:162px; width:100%; height:40px; background:#fff; opacity: .8; border-radius: 8px; }
-
-.layerWrap.bottom .timepicker .layerBtn    {padding:0 24px 32px; gap:10px;}
-.layerWrap.bottom .timepicker .layerBtn button   {border-radius: 8px;}
-.layerWrap.bottom .timepicker .layerBtn .btn     {background:#fff; border:1px solid #E0E0E0}
-.layerWrap.bottom .timepicker .layerBtn .btnOK   {min-width: 10%;}
-
-</style>
 
 
 <!-- 레이어 alert -->
@@ -191,7 +77,7 @@
 
 
 <!-- 레이어 결제방식 선택 -->
-<div class="layerWrap bottom "  id="layer_3">
+<div class="layerWrap bottom" id="layer_3">
   <div class="layerBody">
     <button type="button" class="layerClose"></button>
     <div class="layerCont payType">
@@ -313,7 +199,7 @@
 </div>
 
 <!-- 레이어 시간 예약 -->
-<div class="layerWrap bottom show"  id="layer_6">
+<div class="layerWrap bottom "  id="layer_7">
   <div class="layerBody timepicker">
     <button type="button" class="layerClose"></button>
     <div class="layerCont">
@@ -386,15 +272,82 @@
 
     </div>
     <div class="layerBtn">
-      <button type="button" class="btn"  onclick="layer_close('layer_6')">취소</button>
-      <button type="button" class="btnOK"  onclick="layer_close('layer_6')">선택</button>
+      <button type="button" class="btn"  onclick="layer_close('layer_7')">취소</button>
+      <button type="button" class="btnOK"  onclick="layer_close('layer_7')">선택</button>
     </div>
   </div>
 </div>
 
-<!-- 
-<button type="button" class="btn" id="">전화연결</button>
- -->
+<style>
+
+  .layerWrap .layerBody.callLayer .layerClose  {display:block;  }
+  .callLayer .layerBtn          { padding: 0 18px 18px; }
+  .callLayer .layerBtn button   { border-radius: 8px; }
+  .callLayer .layerCont      {padding-top:145px; background:url(../images/img_callLayer.png) no-repeat 50% 40px; }
+  .callLayer .layerCont .callTit      {text-align: center; padding:15px 0 20px;  }
+  .callLayer .layerCont .callTit strong   {display:block; font-size:20px   }
+  .callLayer .layerCont .callTit span     {display:block; font-size:16px   }
+  .callLayer .layerCont .callTit em       {display:block; margin-top:12px; font-size:16px; color:#F55; font-weight: 700;   }
+  .callLayer .layerCont .callInfo      { width:100%; box-sizing: content-box; margin:0 -20px; padding:16px 20px; background:#F5F5F5 }
+
+  .layerWrap .layerBody.payCalc     {min-height:100px;}
+  .layerWrap .layerBody.payCalc .layerCont    {padding-top:24px;}
+  .layerWrap .layerBody.payCalc .layerClose   {display:none; }
+  .layerWrap .layerBody.payCalc .layerBtn .btn      {border:2px solid #FFDB1F; background:#fff; }
+  .layerWrap .layerBody.payCalc .layerBtn .btnOK     {min-width: 100px;}
+
+</style>
+
+<!-- 레이어 전화연결 -->
+<div class="layerWrap "  id="layer_8">
+  <div class="layerBody callLayer">
+    <button type="button" class="layerClose"></button>
+    <div class="layerCont">
+      <div class="callTit">
+        <strong>전화로 탁송를 부르시겠나요?</strong>
+        <span>말로하는 탁송 호출!</span>
+        <em>전화로 부르기는 쿠폰과 충전금 <br>사용을 할 수 없습니다.</em>
+      </div>
+
+      <div class="callInfo">
+        <strong>[안내 사항]</strong>
+        <ul>
+          <li>• 상담사가 친절히 도와드리겠습니다.</li>
+          <li>• 입력하신 출발지, 도착지 등의 정보를 기반으로 상담사가 신속하게 접수합니다.</li>
+          <li>• 상담사를 통해 추가로 탁송을 요청하실 수 있습니다. 단, 추가로 호출한 건은 앱에서의 결제수단을 적용할 수 없고, 앱에서 제공하는 혜택을 받으실 수 없습니다.</li>
+          <li>• 쿠폰과 충전금 사용은 앱으로 부를 때만 사용하실 수 있습니다. 전화로 부르기에서는 상담사가 고객님 쿠폰과 충전금 정보를 알 수 없어 사용할 수 없으니 양해 바랍니다.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="layerBtn">
+      <button type="button" class="btnCall"  onclick="layer_close('layer_8')">전화로 부르기</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- 레이어 요금 변경 -->
+<div class="layerWrap bottom"  id="layer_9">
+  <div class="layerBody payCalc">
+    <button type="button" class="layerClose"></button>
+    <div class="layerCont">
+      
+      <div class="payBox">
+        <div class="calc">
+          <button type="button" class="minus"><span class="hide">-</span></button>
+          <strong>34,000원</strong>
+          <button type="button" class="plus"><span class="hide">+</span></button>
+        </div>
+      </div>
+
+    </div>
+    <div class="layerBtn">
+      <button type="button" class="btn"  onclick="layer_close('layer_9')">취소</button>
+      <button type="button" class="btnOK"  onclick="layer_close('layer_9')">다음</button>
+    </div>
+  </div>
+</div>
+
 
 
 
@@ -506,6 +459,9 @@
 
   $("#layerBtn_8").on("click",function(){
     layer_open("layer_8")  
+  })
+  $("#layerBtn_9").on("click",function(){
+    layer_open("layer_9")  
   })
 
   $( function() {
