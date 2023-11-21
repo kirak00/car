@@ -7,42 +7,13 @@
 
 <link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/payment.css">
 
 <script src="../js/juqery-3.7.0.min.js"></script>
 <script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
 <script src="../js/common.js"></script>
-<style>
-  header             {display: flex; width: 100%; height: 48px; align-items: center; }
-  header .headerBar  { width: 100%;  overflow: hidden;}
-  header .headerBar button.backBtn  { float: left; width: 28px; height: 28px; text-indent: -9999px; border: none; background: url(./../images/gnb_back.png) no-repeat center;}
-  header .headerBar  h1             { float: right;  width: calc(100% - 28px); line-height: 27px; font-size: 16px; font-weight: 700; text-align: center;}
-
-  .container .odrInfoBox                { width: 100%; padding: 0 16px; border-bottom: 8px solid #F0F3FB; box-sizing: border-box;}
-  .container .odrInfoBox .odrInfoArea   { width: 100%; border-bottom: 1px solid #E0E0E0;}
-  .container .odrInfoBox .odrInfoArea ul.infoBox                    { width: 100%; padding-bottom: 18px; box-sizing: border-box;}
-  .container .odrInfoBox .odrInfoArea ul.infoBox li.infoList        { position: relative; width: 100%; padding-left: 18px; margin-top: 12px; font-size: 14px; font-family: 'Noto Sans KR'; font-weight: 700; box-sizing: border-box;}
-  .container .odrInfoBox .odrInfoArea ul.infoBox li.infoList::after { content: ""; position: absolute; width: 8px; height: 8px; left: 0; top: 50%; margin-top: -4px; background-color: #E0E0E0; border-radius: 50%; }
-
-  .container .odrInfoBox .drivePriceArea    { display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 16px; padding-bottom: 16px;}
-  .container .odrInfoBox .drivePriceArea .dPriceTxt span.priceKm     { display: inline-block; width: 100%; font-size: 14px; font-weight: 400;}
-  .container .odrInfoBox .drivePriceArea .dPriceTxt strong.dPrice    { display: inline-block; width: 100%; font-size: 22px;}
-  .container .odrInfoBox .drivePriceArea .dPriceBtnArea              { width: 88px; margin: auto 0; font-size: 14px; border-radius: 63px; }
-  .container .odrInfoBox .drivePriceArea .dPriceBtnArea a.dPriceBtn  { display: block; width: 100%;height: 34px; font-size: 14px; font-weight: 500; padding: 7px 16px 7px 17px; background: #FFDB1F; border-radius: 63px; box-sizing: border-box;}
-
-
-  .container .paymentArea     { width: 100%; padding: 24px 16px 0; box-sizing: border-box;}
-  .container .paymentArea .paymentTab   { width: 100%;}
-  .container .paymentArea .paymentTab button.payTab   { width: 160px; padding: 12px 23px; font-size: 16px; font-weight: 700; text-align: center; border-radius: 8px; border: 1.5px solid #E0E0E0; background: #FFF; box-sizing: border-box;}
-  .container .paymentArea .paymentTab button.payTab.active    {color: #F49B3E; border: 1px solid #FFDB1F;}
-  .container .paymentArea .paymentTab button.payTab.credit   { margin-right: 4px;}
-
-  .container .paymentArea .choiceCard    { width: 100%; margin-top: 11px; padding: 10px 12px; border: 1px solid #000; border-radius: 6px; overflow: hidden;}
-  .container .paymentArea .choiceCard span.cardName    { float: left; line-height: 34px; font-size: 16px; }
-  .container .paymentArea .choiceCard button.change    { float: right; padding: 7px 15px; font-size: 14px; background-color: #F5F5F5; border-radius: 63px; }
-</style>
 </head>
 <body>
-
   <div class="wrap">
     <!-- 헤더 바 영역 -->
     <header>
@@ -54,7 +25,9 @@
 
     <!-- 메인 영역 -->
     <section class="container">
+      <!-- 운행 정보영역 시작 -->
       <div class="odrInfoBox">
+        <!-- 주소&위치 영역 -->
         <div class="odrInfoArea">
           <ul class="infoBox">
             <li class="infoList list1">서울 강서구 양천로 583</li>
@@ -62,6 +35,7 @@
             <li class="infoList list3">테크노-마트21</li>
           </ul>
         </div>
+        <!-- 운행요금 영역 -->
         <div class="drivePriceArea">
           <div class="dPriceTxt">
             <span class="priceKm">운행 요금ㅣ26km</span>
@@ -73,58 +47,51 @@
         </div>
       </div>
 
-      <hr class="line" />
-
-      <div class="paymentArea">
-        <div class="paymentTab">
-          <button class="payTab credit active">간편카드</button>
-          <button class="payTab cash">현금 결제</button>
-        </div>
-        <div class="choiceCard">
-          <span class="cardName">간편카드 : 국민 2500</span>
-          <button class="change">변경</button>
-        </div>
+      <!-- 결제방법선택 & 충전금사용 영역 시작 -->
+      <div class="pay_couponArea">
+        <!-- 결제방법 영역 시작 -->
+        <div class="paymentArea">
+          <div class="paymentTab">
+            <button class="payTab credit active">간편카드</button>
+            <button class="payTab cash">현금 결제</button>
+          </div>
+          <div class="choiceCard">
+            <span class="cardName">간편카드 : 국민 2500</span>
+            <button class="change">변경</button>
+          </div>
+        </div>    
+        <!-- 쿠폰 & 충전금 영역 시작 -->
+        <div class="couponBox">
+          <!-- 쿠폰 영역 -->
+          <div class="coupon">
+            <span class="couponTxt">할인쿠폰</span>
+            <span class="couponCount">
+              <em class="count">0개</em>
+              <a href="#" class="couponArr"></a>
+            </span>
+          </div>
+          <!-- 충전금 영역 -->
+          <div class="point">
+            <span class="pointTxt">충전금</span>
+            <span class="pointAmount"><strong>100,000원 </strong>보유</span>
+          </div>
+          <div class="usedAmount">
+            <strong class="amount">0</strong>
+            <button class="allAmount">전액사용</button>
+          </div>
+        </div>    
       </div>
 
-      <div class="addressSetBox line">
-        <div class="form">
-          <div class="tit">
-            <strong>출발 <span>서울 강서구 양천로 583</span></strong>
-          </div>
-        </div>
-        <ul class="over">
-          <li><span class="ico_1">서울 강서구 양천로 583</span> <button type="button" class="btnDel"></button></li>
-          <li><span class="ico_2">서울 강서구 양천로 583</span> <button type="button" class="btnDel"></button></li>
-          <li><span class="ico_3">서울 강서구 양천로 583</span> <button type="button" class="btnDel"></button></li>
-        </ul>
-        <div class="to">
-          <div class="tit">
-            <strong>도착 <span>서울 강서구 양천로 583</span></strong> <a href="#" class="btnAdd">+ 경유</a>
-          </div>
-        </div>
+      <!-- 최종 결제금액 -->
+      <div class="totalPriceArea">
+        <span class="totalPriceTxt">최종 결제 금액</span>
+        <strong class="totalPrice">55,000원</strong>
       </div>
-
-      <div class="paySetting">
-        <div class="distance">
-          <span>예상이동 거리 : <strong>149.5km</strong></span>
-        </div>
-        <div class="payBox">
-          <em class="tit">호출 요금</em>
-          <div class="calc">
-            <button type="button" class="minus"><span class="hide">-</span></button>
-            <strong>34,000원</strong>
-            <button type="button" class="plus"><span class="hide">+</span></button>
-          </div>
-        </div>
-      </div>
+      <!-- 하단 호출버튼 -->
       <div class="btBtns">
-        <a href="#" class="btn">전화로 호출</a>
-        <a href="#" class="btnOK">앱으로 호출</a>
+        <a href="#" class="btnOK">호출하기</a>
       </div>
     </section>
   </div>
-
-
-
 </body>
 </html>

@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+  /* 헤더영역 */
+  header             { display: flex; width: 100%; height: 48px; align-items: center; }
+  header .headerBar  {  position: relative; width: 100%;}
+  header .headerBar button.backBtn  {  position: absolute; left: 0; top: 0; width: 28px; height: 28px; text-indent: -9999px; border: none; background: url(./../images/gnb_back.png) no-repeat center;}
+  header .headerBar  h1             {  width: 100%; line-height: 27px; font-size: 16px; font-weight: 700; text-align: center;}
+
+  /* 컨텐츠 영역 시작 */
+  /* 주소&위치 영역 */
+  .container .odrInfoBox                {  width: 100%; padding: 0 16px; border-bottom: 8px solid #F0F3FB; box-sizing: border-box;}
+  .container .odrInfoBox .odrInfoArea   {  width: 100%; border-bottom: 1px solid #E0E0E0;}
+  .container .odrInfoBox .odrInfoArea ul.infoBox                    {  width: 100%; padding-bottom: 18px; box-sizing: border-box;}
+  .container .odrInfoBox .odrInfoArea ul.infoBox li.infoList        {  position: relative; width: 100%; padding-left: 18px; margin-top: 12px; font-size: 14px; font-family: 'Noto Sans KR'; font-weight: 700; box-sizing: border-box;}
+  .container .odrInfoBox .odrInfoArea ul.infoBox li.infoList::after {  content: ""; position: absolute; width: 8px; height: 8px; left: 0; top: 50%; margin-top: -4px; background-color: #E0E0E0; border-radius: 50%; }
+
+  /* 운행요금&변경 영역 */
+  .container .odrInfoBox .drivePriceArea        {  display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 16px; padding-bottom: 16px;}
+  .container .odrInfoBox .drivePriceArea .dPriceTxt span.priceKm     {  display: inline-block; width: 100%; font-size: 14px; font-weight: 400;}
+  .container .odrInfoBox .drivePriceArea .dPriceTxt strong.dPrice    {  display: inline-block; width: 100%; font-size: 22px;}
+  .container .odrInfoBox .drivePriceArea .dPriceBtnArea              {  width: 88px; margin: auto 0; font-size: 14px; border-radius: 63px; }
+  .container .odrInfoBox .drivePriceArea .dPriceBtnArea a.dPriceBtn  {  display: block; width: 100%;height: 34px; font-size: 14px; font-weight: 500; padding: 7px 16px 7px 17px; background: #FFDB1F; border-radius: 63px; box-sizing: border-box;}
+
+  /* 카드&현금 탭 영역 */
+  .container .pay_couponArea     {  width: 100%; padding: 24px 16px 0; border-bottom: 8px solid #F0F3FB; box-sizing: border-box;}
+  .container .pay_couponArea .paymentArea               {  width: 100%;}
+  .container .pay_couponArea .paymentArea .paymentTab   {  width: 100%;}
+  .container .pay_couponArea .paymentArea .paymentTab button.payTab           {  width: 160px; padding: 12px 23px; font-size: 16px; font-weight: 700; text-align: center; border-radius: 8px; border: 1.5px solid #E0E0E0; background: #FFF; box-sizing: border-box;}
+  .container .pay_couponArea .paymentArea .paymentTab button.payTab.active    { color: #F49B3E; border: 1px solid #FFDB1F;}
+  .container .pay_couponArea .paymentArea .paymentTab button.payTab.credit    {  margin-right: 4px;}
+
+  /* 탭 하단 카드변경 영역 */
+  .container .pay_couponArea .paymentArea .choiceCard    {  width: 100%; margin: 11px 0 24px 0; padding: 10px 12px; border: 1px solid #333333; border-radius: 6px; overflow: hidden; box-sizing: border-box;}
+  .container .pay_couponArea .paymentArea .choiceCard span.cardName    {  float: left; line-height: 34px; font-size: 16px; }
+  .container .pay_couponArea .paymentArea .choiceCard button.change    {  float: right; padding: 7px 15px; font-size: 14px; background-color: #F5F5F5; border-radius: 63px; box-sizing: border-box;}
+
+  /* 할인쿠폰 영역 */
+  .container .pay_couponArea  span    { font-size: 16px; color: #333333;}  /* coupon영역 span공통 */
+
+  .container .pay_couponArea .couponBox           { width: 100%; border-top: 1px solid #E0E0E0;}
+  .container .pay_couponArea .couponBox .coupon   { display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 24px;}
+  .container .pay_couponArea .couponBox .coupon span.couponCount              { display: flex;}
+  .container .pay_couponArea .couponBox .coupon span.couponCount em.count     { font-size: 18px; color: #BDBDBD; font-weight: 700;}
+  .container .pay_couponArea .couponBox .coupon span.couponCount a.couponArr  { display: block; width: 20px; height: 20px; margin: 2px 0 0 8px; background: url(./../images/arrow_more.png) no-repeat center;}
+
+  /* 충전금 영역 */
+  .container .pay_couponArea .couponBox .point    { display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 24px;}
+  .container .pay_couponArea .couponBox .point span.pointAmount   { font-size: 14px;}
+
+  /* 충전금_전액사용 영역 */
+  .container .pay_couponArea .couponBox .usedAmount    {  width: 100%; margin: 12px 0 24px 0; padding: 10px 12px 10px 16px; border: 1px solid #333333; border-radius: 6px; overflow: hidden; box-sizing: border-box;}
+  .container .pay_couponArea .couponBox .usedAmount strong.amount       {  float: left; line-height: 34px; font-size: 18px; }
+  .container .pay_couponArea .couponBox .usedAmount button.allAmount    {  float: right; padding: 7px 9px 7px 8px; font-size: 14px; background-color: #F5F5F5; border-radius: 63px; box-sizing: border-box;}
+
+  /* 최종 결제금액 영역 */
+  .container .totalPriceArea    { width: 100%; margin-top: 16px; padding: 0 16px; overflow: hidden; box-sizing: border-box;}
+  .container .totalPriceArea span.totalPriceTxt    { float: left; font-size: 16px; line-height: 24px;}
+  .container .totalPriceArea strong.totalPrice     { float: right; font-size: 22px; color: #F49B3E;}
+
+  /* 하단 호출버튼 */
+  .container .btBtns      { margin: 30px 0 58px 0;}
+  .container .btBtns a    { font-weight: 700;}
