@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>차부바</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/payment2.css">
+
+<script src="../js/juqery-3.7.0.min.js"></script>
+<script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script src="../js/common.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <!-- 헤더 바 영역 -->
+    <header>
+      <div class="headerBar">
+        <button class="backBtn">이전</button>
+        <h1 class="mainTitle">결제</h1>
+      </div>
+    </header>
+
+    <!-- 메인 영역 -->
+    <section class="container">
+      <!-- 운행 정보영역 시작 -->
+      <div class="odrInfoBox">
+        <!-- 주소&위치 영역 -->
+        <div class="odrInfoArea">
+          <ul class="infoBox">
+            <li class="infoList list1">서울 강서구 양천로 583</li>
+            <li class="infoList list2">테크노-마트21</li>
+            <li class="infoList list3">테크노-마트21</li>
+          </ul>
+        </div>
+        <!-- 운행요금 영역 -->
+        <div class="drivePriceArea">
+          <div class="dPriceTxt">
+            <span class="priceKm">운행 요금ㅣ26km</span>
+            <strong class="dPrice">55,000원</strong>
+          </div>
+          <div class="dPriceBtnArea">
+            <a href="#" class="dPriceBtn">요금 변경</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 결제방법선택 & 충전금사용 영역 시작 -->
+      <div class="pay_couponArea">
+        <!-- 결제방법 영역 시작 -->
+        <div class="paymentArea">
+          <div class="paymentTab">
+            <button class="payTab credit">간편카드</button>
+            <button class="payTab cash active">현금 결제</button>
+          </div>
+        </div>    
+          
+        <div class="cashContent">
+          <div class="notice noti01">
+            <strong>운행 완료 후 기사님께 현금 지불해 주세요. </strong>
+          </div>
+          <div class="notice noti02">
+            지급 방식은 도착 담당자가 <br />
+            <strong>현금 또는 계좌이체</strong>로 진행 가능합니다.
+          </div>
+          <div class="notice noti03">
+            <span>현금결제는 쿠폰과 충전금을 사용할 수 없습니다.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 최종 결제금액 -->
+      <div class="totalPriceArea">
+        <span class="totalPriceTxt">최종 결제 금액</span>
+        <strong class="totalPrice">55,000원</strong>
+      </div>
+      <!-- 하단 호출버튼 -->
+      <div class="btBtns">
+        <a href="#" class="btnOK">호출하기</a>
+      </div>
+    </section>
+  </div>
+  
+  <style>
+    .container .cashContent   { width: 100%;  margin: 23px 0 24px;}
+    .container .cashContent .notice   {font-size: 14px; text-align: center;}
+    .container .cashContent .noti01   {font-size: 16px;}
+    .container .cashContent .noti02   {margin-top: 4px; line-height: 22px;}
+    .container .cashContent .noti03 span   {display: inline-block; position: relative; padding-left: 14px; margin-top: 13px; font-size: 14px; font-weight: 700; color: #FF5757; box-sizing: border-box;}
+    .container .cashContent .noti03 span::after   {content: "";  position: absolute; width: 14px; height: 14px; left: 0; top: 3px; background: url(./../images/warning.png) no-repeat center;}
+
+    
+  </style>
+</body>
+</html>
