@@ -58,7 +58,7 @@
   .container .totalPriceArea strong.totalPrice     { float: right; font-size: 22px; color: #F49B3E;}
 
   /* 하단 호출버튼 */
-  .container .btBtns      { margin: 30px 0 58px 0;}
+  .container .btBtns { padding: 0; margin: 30px 0 141px 0;}
   .container .btBtns a    { font-weight: 700;}
 
   
@@ -69,5 +69,4 @@
   .container .cashContent .noti03 span   {display: inline-block; position: relative; padding-left: 14px; margin-top: 13px; font-size: 14px; font-weight: 700; color: #FF5757; box-sizing: border-box;}
   .container .cashContent .noti03 span::after   {content: "";  position: absolute; width: 14px; height: 14px; left: 0; top: 3px; background: url(./../images/warning.png) no-repeat center;}
 
-  
   
