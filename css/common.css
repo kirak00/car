@@ -349,3 +349,41 @@ textarea::placeholder      {font-size: 14px; color:#BDBDBD }
 
 
 /* 레이어 */
+
+
+/* 대리 */
+.daeriWrap    {position:relative; }
+.daeriWrap a.btnBack    {position:absolute; top:50px; left:16px; width:42px; height:42px; z-index:100; border-radius: 50%; background:url(../images/gnb_back_2.png) no-repeat 50% 50% #fff; box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.20);   }
+.fullmap      {position:relative; height:100vh; z-index:10; }
+.fullmap img    {min-height:100vh; z-index:10; }
+.infoSetting    {position:absolute; width:100%; z-index:20; border-radius:16px 16px 0 0; padding:0 16px; left:0; bottom:0; background:#fff; }
+.infoSetting a.btnCoupon    {position:absolute;  top:-130px; right:10px; width:68px; height:68px; z-index:100; background: url(../images/btn_coupon.png) no-repeat 0 0; }
+.infoSetting    { }
+.infoSetting .userInfo {position:absolute;width:100%; padding:12px 16px 30px; top:-60px; left:0; z-index:5;  }
+.infoSetting .userInfo::before {content:""; position:absolute; left:0; top:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.45); border-radius:20px 20px 0 0; }
+.infoSetting .userInfo .info        {position:relative; color:#fff;font-weight: 700; display:flex; justify-content: space-between; }
+.infoSetting .userInfo .info span   {margin:auto 0;  }
+.infoSetting .userInfo .info span strong   {font-size: 18px; color:#FFC634; vertical-align: -1px; margin-left:8px;  }
+.infoSetting .userInfo .info a.btn  {display:inline-block; padding-right:30px; height:36px; border:0; font-size:12px; line-height:35px; border-radius:18px; color:#333; background: url(../images/arrow_r_b.png) no-repeat right 10px top 50% #fff; background-size:18px;  }
+.infoSetting .location      {position:relative; z-index:10; width:100%; box-sizing: content-box; padding:20px 16px 0; overflow: hidden; margin:0 -16px; border-radius:20px 20px 0 0; background:#fff;  }
+
+.infoSetting .location .from        {border-bottom:1px solid #E0E0E0; padding-bottom:16px;  }
+.infoSetting .location .from a        {display:flex; width:100%; gap:10px; font-size:16px; }
+.infoSetting .location .from a em     {font-weight: 700;}
+.infoSetting .location .from a span   {}
+.infoSetting .location .to   { padding:16px 0 0;}
+.infoSetting .location .to .toAddr   { display:flex; padding-bottom:8px; width:100%; justify-content: space-between; }
+.infoSetting .location .to .toAddr strong     { margin:auto 0; font-size: 16px; ;}
+.infoSetting .location .to .toAddr a.btnAdd   { height:28px; line-height:28px;}
+.infoSetting .location .to .prevList   {display:flex; padding:8px 0 0; width:100%; flex-wrap: nowrap; overflow: auto; gap:6px;}
+.infoSetting .location .to .prevList::-webkit-scrollbar{  display:none;}
+.infoSetting .location .to .prevList button   {border:1px solid #BDBDBD; height:40px; padding:0 16px;  white-space: nowrap; background:#fff; border-radius: 8px; font-weight: 500;  }
+.infoSetting .location .to .prevList button em   {color:#828282; }
+.infoSetting .location .to .prevList button span.home   {padding-left:24px; background: url(../images/ico_home.png) no-repeat 0 50%;}
+
+.infoSetting .location .search      {position: relative;}
+.infoSetting .location .search input[type=text]      {padding-right:45px; height:48px; border:1px solid #F5F5F5; background:#F5F5F5;border-radius: 8px; }
+.infoSetting .location .search .btnSearch      {position: absolute; top:16px; right:12px; width:26px; height:26px; background: url(../images/ico_search_g.png) no-repeat 0 0; }
+.infoSetting .location + .btBtns      {padding-top:16px; }
+
+
