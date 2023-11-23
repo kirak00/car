@@ -169,14 +169,16 @@ input[type=text]    { width:100%; height:40px; padding-left:12px; border-radius:
 input[type=text]::placeholder,
 input[type=text]::-webkit-input-placeholder    { font-size: 14px; color:#BDBDBD; font-weight: 350; }
 input[type=checkbox]    {display:none;  }
-input[type=checkbox] + label    { cursor: pointer; padding-left:20px; display:inline-block; min-height:20px; background: url(../images/checkbox_normal.png) no-repeat 0 50%; }
-input[type=checkbox]:checked + label  { background: url(../images/checkbox_press.png) no-repeat 0 50%; }
-input[type=checkbox]:disabled + label { background: url(../images/checkbox_disabled.png) no-repeat 0 50%; }
+input[type=checkbox] + label    { cursor: pointer; padding-left:20px; display:inline-block; min-height:20px; background: url(../images/checkbox_normal.png) no-repeat 0 3px; }
+input[type=checkbox]:checked + label  { background: url(../images/checkbox_press.png) no-repeat 0 3px; }
+input[type=checkbox]:disabled + label { background: url(../images/checkbox_disabled.png) no-repeat 0 3px; }
 input[type=checkbox] + label span    { padding-left:8px; display:inline-block; }
 
 
 .carInfoForm   {padding:0 16px 24px; border-top:10px solid #F5F5F5}
-.carInfoForm h3  {margin-top:24px; margin-bottom:10px; }
+.carInfoForm .titBox   {display:flex; margin-top:24px; justify-content: space-between; }
+.carInfoForm .titBox h3  { margin-bottom:10px; }
+.carInfoForm .titBox span.chkbox  {margin-top:24px; margin-bottom:10px; }
 .carInfoForm input[type=text]  {height:50px; font-size: 16px; }
 .carInfoForm ul.carType  {display:flex; gap:8px; }
 .carInfoForm ul.carType li  {width:100%; height:64px;  }
